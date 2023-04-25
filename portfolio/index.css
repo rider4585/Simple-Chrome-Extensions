@@ -1,0 +1,177 @@
+@font-face {
+    font-family: Nexa-Heavey;
+    src: url(./media/fonts/Nexa-Heavy.ttf);
+}
+
+@font-face {
+    font-family: Bonbon;
+    src: url(./media/fonts/Bonbon\ Font.ttf);
+}
+
+@font-face {
+    font-family: Only-Brush;
+    src: url(./media/fonts/onlybrush.ttf);
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: auto;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.540);
+}
+
+
+#logo {
+    width: 50%;
+    padding-left: 2%;
+}
+
+#logo_img {
+    width: auto;
+    height: calc(10vh - 5vh);
+}
+
+#nav_bar_element {
+    width: 50%;
+    padding-right: 2%;
+}
+
+#nav_items {
+    width: 60%;
+    padding: 0;
+    margin: 0;
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    color: white;
+    font-family: sans-serif;
+    transition: .2s;
+    font-family: Nexa-Heavey;
+}
+
+a:hover {
+    transform: scale(1.2);
+    text-shadow: rgba(0, 0, 0, 0.543) 0px 0px 10px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+#home_page,
+#about_page,
+#projects_page,
+#contact_page {
+    /* position: relative; */
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* #background_img{
+    height: 100vh;
+} */
+
+#home_page {
+    /* background-image: url(./media/images/background.jpg); */
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(./media/images/background.jpg);
+    background-size: 100vw auto;
+    background-repeat: no-repeat;
+    filter: contrast(1.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden    ;
+}
+
+#quote {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#forF, #forA{
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+#forF{
+    margin-bottom: 50px;
+}
+
+#forA{
+    margin-top: 50px;
+}
+
+#born {
+    font-family: Only-Brush;
+    font-size: 20em;
+    color: white;
+    text-shadow: red -5px -1px, black -6px -4px 10px, black 0px 0px 40px;
+    line-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#brush, #brush_copy {
+    font-family: Only-Brush;
+    font-size: 40em;
+    line-height: 0.5;
+    padding: 0;
+    margin: 0;
+}
+
+#brush{
+    background-image: url(./media/images/background.jpg);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+}
+
+#brush_copy{
+    text-shadow: black 0px 0px 0.05em;
+}
+
+#about_page {
+    background-color: brown;
+}
+
+#projects_page {
+    background-color: blueviolet;
+}
+
+#contact_page {
+    background-color: burlywood;
+}
