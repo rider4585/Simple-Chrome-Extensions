@@ -203,7 +203,7 @@ a:link {
 #contact_background {
     width: 100vw;
     height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.387), rgba(0, 0, 0, 0.387)), url(./media/images/contact_background.JPG);
+    background: linear-gradient(rgba(0, 0, 0, 0.387), rgba(0, 0, 0, 0.387)), url(./media/images/contact_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
