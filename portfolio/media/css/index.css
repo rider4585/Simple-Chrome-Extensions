@@ -69,7 +69,7 @@ a {
 .nav_links {
     color: white;
     transition: .2s;
-    font-family: Nexa-Heavey;
+    font-family: Gotham-Medium;
 }
 
 .nav_links:hover {
@@ -83,7 +83,7 @@ a:link {
 
 #home_page,
 #about_page,
-#projects_page,
+#gallery_page,
 #contact_page {
     /* position: relative; */
     height: 100vh;
@@ -97,6 +97,6 @@ a:link {
     background-color: #151515;
 }
 
-#projects_page {
+#gallery_page {
     background-color: #151515;
 }
