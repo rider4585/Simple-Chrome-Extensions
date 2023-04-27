@@ -1,0 +1,65 @@
+#home_page {
+    /* background-image: url(./media/images/background.jpg); */
+    background: linear-gradient(0deg, #282626 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 100%), url(/media/images/background.jpg);
+    background-size: 100vw auto;
+    /* background-size: auto 100vh; */
+    background-repeat: no-repeat;
+    filter: contrast(1.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#quote {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#forF,
+#forA {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+}
+
+#forF {
+    margin-bottom: 50px;
+}
+
+#forA {
+    margin-top: 50px;
+}
+
+#born {
+    font-family: Only-Brush;
+    font-size: 20em;
+    color: white;
+    text-shadow: red -5px -1px, black -6px -4px 10px, black 0px 0px 40px;
+    line-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#brush,
+#brush_copy {
+    font-family: Only-Brush;
+    font-size: 40em;
+    line-height: 0.5;
+    padding: 0;
+    margin: 0;
+}
+
+#brush {
+    background-image: url(/media/images/background.jpg);
+    -webkit-background-clip: text;
+    color: transparent;
+    position: absolute;
+}
+
+#brush_copy {
+    text-shadow: black 0px 0px 0.05em;
+}

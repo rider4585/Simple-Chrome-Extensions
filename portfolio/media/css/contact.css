@@ -1,0 +1,89 @@
+#contact_page {
+    background-color: #151515;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact_background {
+    width: 100vw;
+    height: 60vh;
+    background: linear-gradient(#00000063, rgba(0, 0, 0, 0.387)), url(/media/images/contact_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    background-position: center;
+    flex-direction: row;
+}
+
+#contact_details,
+#social_media {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact_details {
+    padding-left: 5%;
+    /* align-items: start; */
+}
+
+#social_media {
+    padding-right: 5%;
+    /* align-items: end; */
+}
+
+#contact_me,
+#follow_me {
+    color: white;
+    font-family: Nexa-Heavey;
+    font-size: 3em;
+    letter-spacing: 0.2em;
+}
+
+#mail_id,
+#phone_no {
+    padding: 0.3em;
+    width: fit-content;
+    transition: .2s ease-in-out;
+    font-family: Gotham-Bold;
+}
+
+#mail_id:hover,
+#phone_no:hover {
+    font-size: 1.5em;
+}
+
+#instagram_logo,
+#linkedin_logo,
+#github_logo {
+    font-size: 3em;
+    padding: 0.3em;
+    transition: .2s ease-in-out;
+}
+
+#instagram_logo:hover,
+#linkedin_logo:hover,
+#github_logo:hover {
+    font-size: 4em;
+}
+
+#identity {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#name {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5em;
+    font-family: Nexa-ExtraLight;
+    color: white;
+}

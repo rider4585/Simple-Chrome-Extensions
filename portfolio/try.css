@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap");
+
+@font-face {
+  font-family: Gotham-Bold;
+  src: url(./media/fonts/Gotham-Bold.otf);
+}
+
+* {
+  box-sizing: border-box;
+  color: white;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 2px;
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* .win-grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* .win-btn {
+  padding: 2rem;
+  text-align: center;
+  border: none;
+  border-radius: 0px;
+  background: black;
+  color: white;
+  border: 1px solid transparent;
+  z-index: 4;
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  font-size: 5em;
+  font-weight:bolder;
+  -webkit-background-clip: text;
+  color: transparent;
+} */
+
+/* #name{
+  position: absolute;
+  z-index: 4;
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+} */
+
+button:focus {
+  outline: none;
+}
+
+.name {
+  z-index: 999;
+  font-family: Gotham-Bold;
+  font-size: 200px;
+  color: rgba(177, 177, 177, 0.233);
+  -webkit-background-clip: text;
+}
