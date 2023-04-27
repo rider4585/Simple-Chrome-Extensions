@@ -1,34 +1,34 @@
 @font-face {
     font-family: Nexa-Heavey;
-    src: url(/media/fonts/Nexa-Heavy.ttf);
+    src: url(../fonts/Nexa-Heavy.ttf);
 }
 
 @font-face {
     font-family: Gotham-Bold;
-    src: url(/media/fonts/Gotham-Bold.otf);
+    src: url(../fonts/Gotham-Bold.otf);
 }
 
 @font-face {
     font-family: Gotham-Medium;
-    src: url(/media/fonts/Gotham-Medium.otf);
+    src: url(../fonts/Gotham-Medium.otf);
 }
 
 @font-face {
     font-family: Gotham-Book;
-    src: url(/media/fonts/Gotham-Book.otf);
+    src: url(../fonts/Gotham-Book.otf);
 }
 
 @font-face {
     font-family: Nexa-ExtraLight;
-    src: url(/media/fonts/Nexa-ExtraLight.ttf);
+    src: url(../fonts/Nexa-ExtraLight.ttf);
 }
 
 @font-face {
     font-family: Bonbon;
-    src: url(/media/fonts/Bonbon\ Font.ttf);
+    src: url(../fonts/Bonbon\ Font.ttf);
 }
 
 @font-face {
     font-family: Only-Brush;
-    src: url(/media/fonts/onlybrush.ttf);
+    src: url(../fonts/onlybrush.ttf);
 }

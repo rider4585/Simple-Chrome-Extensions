@@ -1,6 +1,6 @@
-@import url("/media/css/fonts.css");
-@import url("/media/css/index.css");
-@import url("/media/css/home.css");
-@import url("/media/css/about.css");
-@import url("/media/css/gallery.css");
-@import url("/media/css/contact.css");
+@import url("./fonts.css");
+@import url("./index.css");
+@import url("./home.css");
+@import url("./about.css");
+@import url("./gallery.css");
+@import url("./contact.css");

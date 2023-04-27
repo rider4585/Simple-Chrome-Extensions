@@ -9,7 +9,7 @@
 #contact_background {
     width: 100vw;
     height: 60vh;
-    background: linear-gradient(#00000063, rgba(0, 0, 0, 0.387)), url(/media/images/contact_background.jpg);
+    background: linear-gradient(#00000063, rgba(0, 0, 0, 0.387)), url(../images/contact_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
