@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise Form</title>
+  </head>
+  <body>
+    <h1>Exercise Form</h1>
+    <form id="exercise-form" action="index.js" method="post">
+      <label for="exercise-name">Exercise Name:</label>
+      <input type="text" id="exercise-name" name="exercise-name" required><br>
+
+      <label for="muscles-involved">Muscles Involved:</label>
+      <input type="text" id="muscles-involved" name="muscles-involved"><br>
+
+      <input type="submit" id="submit" value="Add">
+      <input type="button" id="Delete" value="Delete">
+    </form>
+    <pre id="output"></pre>
+  </body>
+  <script src="./index.js"></script>
+</html>
