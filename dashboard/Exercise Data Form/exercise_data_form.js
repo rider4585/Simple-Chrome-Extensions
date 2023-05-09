@@ -33,6 +33,7 @@ const deleteBtn = document.querySelectorAll('.btn-danger');
 onValue(exerciseDataDB, function (snapshot) {
     const data = snapshot.val();
     exerciseData = JSON.parse(data);
+    localStorage.setItem('exerciseData', exerciseData);
     if (Object.keys(exerciseData).length !== 0) {
         createDetailsView(exerciseData);
     }
