@@ -1,7 +1,45 @@
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+import {
+    getDatabase,
+    ref,
+    set,
+    onValue
+} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAlkqBseMsKLwP4HsSqATHSry17PQqYNTg",
+    authDomain: "yuwe-fitness.firebaseapp.com",
+    databaseURL: "https://yuwe-fitness-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "yuwe-fitness",
+    storageBucket: "yuwe-fitness.appspot.com",
+    messagingSenderId: "411480626389",
+    appId: "1:411480626389:web:accc7f74bb1568d3007e5c",
+    measurementId: "G-V4G0LYXZX6"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const exerciseDataDB = ref(database, 'exercise-name');
+
 // Get the form element
 var exerciseData = {};
 const form = document.querySelector('#exercise-form');
 const dataToAppendDiv = document.querySelector('.dataToAppend');
+const saveToDB = document.querySelector('#saveToDB');
+const deleteBtn = document.querySelectorAll('.btn-danger');
+
+onValue(exerciseDataDB, function (snapshot) {
+    const data = snapshot.val();
+    exerciseData = JSON.parse(data);
+    if (Object.keys(exerciseData).length !== 0) {
+        createDetailsView(exerciseData);
+    }
+    showHideCopyBtn();
+}, (error) => {
+    alert(error.message);
+});
 
 // Add event listener for form submission
 form.addEventListener('submit', function (event) {
@@ -44,6 +82,7 @@ form.addEventListener('submit', function (event) {
 
     // Clear the form inputs
     form.reset();
+    localStorage.setItem('exerciseData', JSON.stringify(exerciseData));
     createDetailsView(exerciseData);
 });
 
@@ -54,7 +93,7 @@ function createDetailsView(exerciseData) {
         tempData = '';
         for (const exerciseDataField in exerciseData[exerciseNameField]) {
             tempData = `
-            <details>
+            <details id='${exerciseNameField}'>
                 <summary class="btn-success">${exerciseNameField}</summary>
                 <div class="container-fluid summery-data">
                     <div class="row">
@@ -118,75 +157,20 @@ function createDetailsView(exerciseData) {
         innerHtmlToAppend += tempData;
     }
 
-    document.querySelector('.dataToAppend').innerHTML = innerHtmlToAppend;
+    dataToAppendDiv.innerHTML = innerHtmlToAppend;
     showHideCopyBtn();
 }
 
 function showHideCopyBtn() {
     if (Object.keys(exerciseData).length == 0) {
-        document.querySelector('.copy-btn').classList.add('hide');
+        saveToDB.classList.add('hide');
     } else {
-        document.querySelector('.copy-btn').classList.remove('hide');
+        saveToDB.classList.remove('hide');
     }
 }
 
-function copyToClipboard() {
-    //show this only when data is present
-    const jsonString = JSON.stringify(exerciseData);
-    navigator.clipboard.writeText(jsonString)
-        .then(() => {
-            console.log('Copied to clipboard:', jsonString);
-        })
-        .catch(err => {
-            console.error('Failed to copy:', err);
-        });
-}
-
-function loadData() {
-    //check if user has provided valid json
-    exerciseData = JSON.parse(prompt('Paste your data here'));
-    createDetailsView(exerciseData);
-}
-
-function editDetails(exerciseNameField) {
-    if (exerciseData.hasOwnProperty(exerciseNameField)) {
-        document.querySelector('#exercise-name').value = exerciseNameField;
-        document.querySelector('#body-part').value = exerciseData[exerciseNameField]['Body Part'];
-        document.querySelector('#muscle-involved').value = exerciseData[exerciseNameField]['Muscle Involved'];
-        document.querySelector('#joint-involved').value = exerciseData[exerciseNameField]['Joint Involved'];
-        document.querySelector('#exercise-type').value = exerciseData[exerciseNameField]['Type of Exercise'];
-        document.querySelector('#equipment-used').value = exerciseData[exerciseNameField]['Equipment Used'];
-        document.querySelector('#workout-splits').value = exerciseData[exerciseNameField]['Workout Splits'];
-        document.querySelector('#location').value = exerciseData[exerciseNameField]['Location'];
-        document.querySelector('#form-and-technique').value = exerciseData[exerciseNameField]['Form and Technique'];
-        document.querySelector('#images-link').value = exerciseData[exerciseNameField]['Images Link'];
-        document.querySelector('#gif-link').value = exerciseData[exerciseNameField]['GIF Link'];
-        document.querySelector('#video-link').value = exerciseData[exerciseNameField]['Video Link'];
-        document.querySelector('#benefits').value = exerciseData[exerciseNameField]['Benefits'];
-    } else {
-        alert(`Data for ${exerciseNameField} does not exists!`)
-    }
-}
-
-function deleteRecord(exerciseNameField) {
-    if (confirm(`Do you really want to delete data of ${exerciseNameField}`)) {
-        delete exerciseData[exerciseNameField];
-        createDetailsView(exerciseData);
-    }
-}
-
-function fillForm() {
-    document.querySelector('#exercise-name').value = 'Push-up';
-    document.querySelector('#body-part').value = 'Upper body';
-    document.querySelector('#muscle-involved').value = 'Chest, triceps, shoulders';
-    document.querySelector('#joint-involved').value = 'Shoulder';
-    document.querySelector('#exercise-type').value = 'Compound';
-    document.querySelector('#equipment-used').value = 'Bodyweight';
-    document.querySelector('#workout-splits').value = 'Full body';
-    document.querySelector('#location').value = 'Anywhere';
-    document.querySelector('#form-and-technique').value = 'Start in a plank position with your hands shoulder-width apart. Lower your body until your chest touches the ground, then push back up to the starting position. Keep your core tight and your elbows close to your body.';
-    document.querySelector('#images-link').value = 'www.example.com';
-    document.querySelector('#gif-link').value = 'www.example.com';
-    document.querySelector('#video-link').value = 'www.example.com';
-    document.querySelector('#benefits').value = 'Strengthens upper body muscles, Improves core stability';
-}
+saveToDB.addEventListener('click', function () {
+    console.log("hi");
+    let message = localStorage.getItem('exerciseData');
+    set(exerciseDataDB, message);
+});
