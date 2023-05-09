@@ -82,14 +82,8 @@
     <div id="showData" class="container">
       <h2>Exercise Details</h2>
       <div class="dataToAppend form-group">Please fill the form</div>
-      <button
-        class="btn btn-primary form-group hide copy-btn"
-        onclick="copyToClipboard()"
-      >
-        Copy to Clipboard
-      </button>
-      <button class="btn btn-primary form-group" onclick="loadData()">
-        Load Data
+      <button class="btn btn-primary form-group" id="saveToDB">
+        Save
       </button>
     </div>
   </body>
@@ -98,5 +92,6 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"
   ></script>
-  <script src="./exercise_data_form.js"></script>
+  <script type="module" src="./exercise_data_form.js"></script>
+  <script src="./edit_options.js"></script>
 </html>
