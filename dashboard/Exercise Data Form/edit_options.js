@@ -1,34 +1,17 @@
-// 
-function editDetails(exerciseNameField) {
-    let exerciseDataTemp = localStorage.getItem('exerciseData');
-    let exerciseData = JSON.parse(exerciseDataTemp);
-    if (exerciseData.hasOwnProperty(exerciseNameField)) {
-        document.querySelector('#exercise-name').value = exerciseNameField;
-        document.querySelector('#body-part').value = exerciseData[exerciseNameField]['Body Part'];
-        document.querySelector('#muscle-involved').value = exerciseData[exerciseNameField]['Muscle Involved'];
-        document.querySelector('#joint-involved').value = exerciseData[exerciseNameField]['Joint Involved'];
-        document.querySelector('#exercise-type').value = exerciseData[exerciseNameField]['Type of Exercise'];
-        document.querySelector('#equipment-used').value = exerciseData[exerciseNameField]['Equipment Used'];
-        document.querySelector('#workout-splits').value = exerciseData[exerciseNameField]['Workout Splits'];
-        document.querySelector('#location').value = exerciseData[exerciseNameField]['Location'];
-        document.querySelector('#form-and-technique').value = exerciseData[exerciseNameField]['Form and Technique'];
-        document.querySelector('#images-link').value = exerciseData[exerciseNameField]['Images Link'];
-        document.querySelector('#gif-link').value = exerciseData[exerciseNameField]['GIF Link'];
-        document.querySelector('#video-link').value = exerciseData[exerciseNameField]['Video Link'];
-        document.querySelector('#benefits').value = exerciseData[exerciseNameField]['Benefits'];
-    } else {
-        alert(`Data for ${exerciseNameField} does not exists!`)
-    }
-}
-
-function deleteRecord(exerciseNameField) {
-    let exerciseDataTemp = localStorage.getItem('exerciseData');
-    let exerciseData = JSON.parse(exerciseDataTemp);
-    if (confirm(`Do you really want to delete data of ${exerciseNameField}`)) {
-        delete exerciseData[exerciseNameField];
-        localStorage.setItem('exerciseData', JSON.stringify(exerciseData));
-        document.querySelector(`#${exerciseNameField}`).remove();
-    }
+function editDetails(data) {
+    document.querySelector('#exercise-name').value = Object.keys(data);
+    document.querySelector('#body-part').value = data[Object.keys(data)]['Body Part'];
+    document.querySelector('#muscle-involved').value = data[Object.keys(data)]['Muscle Involved'];
+    document.querySelector('#joint-involved').value = data[Object.keys(data)]['Joint Involved'];
+    document.querySelector('#exercise-type').value = data[Object.keys(data)]['Type of Exercise'];
+    document.querySelector('#equipment-used').value = data[Object.keys(data)]['Equipment Used'];
+    document.querySelector('#workout-splits').value = data[Object.keys(data)]['Workout Splits'];
+    document.querySelector('#location').value = data[Object.keys(data)]['Location'];
+    document.querySelector('#form-and-technique').value = data[Object.keys(data)]['Form and Technique'];
+    document.querySelector('#images-link').value = data[Object.keys(data)]['Images Link'];
+    document.querySelector('#gif-link').value = data[Object.keys(data)]['GIF Link'];
+    document.querySelector('#video-link').value = data[Object.keys(data)]['Video Link'];
+    document.querySelector('#benefits').value = data[Object.keys(data)]['Benefits'];
 }
 
 function fillForm() {

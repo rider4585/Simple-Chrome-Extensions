@@ -5,7 +5,9 @@ import {
     getDatabase,
     ref,
     set,
-    onValue
+    onValue,
+    update,
+    remove
 } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -21,33 +23,28 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const exerciseDataDB = ref(database, 'exercise-name');
+const exerciseDataDB = ref(database, 'exercise_name');
 
-// Get the form element
 var exerciseData = {};
 const form = document.querySelector('#exercise-form');
 const dataToAppendDiv = document.querySelector('.dataToAppend');
-const saveToDB = document.querySelector('#saveToDB');
-const deleteBtn = document.querySelectorAll('.btn-danger');
 
 onValue(exerciseDataDB, function (snapshot) {
     const data = snapshot.val();
-    localStorage.setItem('exerciseData', data);
-    exerciseData = JSON.parse(data);
-    if (Object.keys(exerciseData).length !== 0) {
-        createDetailsView(exerciseData);
+    console.log(data);
+    if (data !== null && Object.keys(data).length !== 0) {
+        exerciseData = data;
+        if (Object.keys(exerciseData).length !== 0) {
+            createDetailsView(exerciseData);
+        }
     }
-    showHideCopyBtn();
 }, (error) => {
     alert(error.message);
 });
 
-// Add event listener for form submission
 form.addEventListener('submit', function (event) {
-    // Prevent default form submission behavior
     event.preventDefault();
 
-    // Get the input values
     const exerciseName = document.querySelector('#exercise-name').value;
     const bodyPart = document.querySelector('#body-part').value;
     const muscleInvolved = document.querySelector('#muscle-involved').value;
@@ -62,7 +59,6 @@ form.addEventListener('submit', function (event) {
     const videoLink = document.querySelector('#video-link').value;
     const benefits = document.querySelector('#benefits').value;
 
-    // Create the exercise object
     exerciseData[exerciseName] = {
         'Body Part': bodyPart,
         'Muscle Involved': muscleInvolved,
@@ -78,20 +74,20 @@ form.addEventListener('submit', function (event) {
         'Benefits': benefits
     };
 
-    // Log the exercise object to the console
-    // console.log(exerciseData);
-
-    // Clear the form inputs
     form.reset();
-    localStorage.setItem('exerciseData', JSON.stringify(exerciseData));
     createDetailsView(exerciseData);
+    update(exerciseDataDB, {
+        [exerciseName]: exerciseData[exerciseName]
+    });
 });
 
 function createDetailsView(exerciseData) {
     let innerHtmlToAppend = "";
     let tempData = "";
+    let exerciseName = "";
     for (const exerciseNameField in exerciseData) {
         tempData = '';
+        exerciseName = exerciseNameField;
         for (const exerciseDataField in exerciseData[exerciseNameField]) {
             tempData = `
             <details id='${exerciseNameField}'>
@@ -146,32 +142,57 @@ function createDetailsView(exerciseData) {
                     <div class="col-md-8">${exerciseData[exerciseNameField]['Benefits']}</div>
                     </div>
                     <div class="row">
-                    <button type="submit" class="btn btn-primary submit-btn-right" onclick="editDetails('${exerciseNameField}')">Edit</button>
+                    <button type="submit" class="btn btn-primary btn-right" data-item="${exerciseName}_edit">Edit</button>
                     </div>
                     <div class="row">
-                    <button type="submit" class="btn btn-danger submit-btn-right" onclick="deleteRecord('${exerciseNameField}')">Delete</button>
+                    <button type="submit" class="btn btn-danger btn-right" data-item="${exerciseName}_delete">Delete</button>
                     </div>
                 </div>
             </details>`;
+
         }
 
         innerHtmlToAppend += tempData;
     }
-
     dataToAppendDiv.innerHTML = innerHtmlToAppend;
-    showHideCopyBtn();
+    eventListenersToButtons();
 }
 
-function showHideCopyBtn() {
-    if (Object.keys(exerciseData).length == 0) {
-        saveToDB.classList.add('hide');
-    } else {
-        saveToDB.classList.remove('hide');
+function eventListenersToButtons() {
+    let allBtn = document.querySelectorAll(".btn-right");
+    for (let i = 0; i < allBtn.length; i++) {
+        allBtn[i].addEventListener('click', function (e) {
+            let btnData = e.target.getAttribute('data-item');
+            if (btnData.includes('_edit')) {
+                console.log("edit");
+                let exerciseName = btnData.replace("_edit", "");
+                console.log(exerciseName);
+                editDetails({
+                    [exerciseName]: exerciseData[exerciseName]
+                });
+
+            } else {
+                console.log("delete");
+                let exerciseName = btnData.replace("_delete", "");
+                console.log(exerciseName);
+                deleteRecord(exerciseName);
+            }
+        })
     }
 }
 
-saveToDB.addEventListener('click', function () {
-    console.log("hi");
-    let message = localStorage.getItem('exerciseData');
-    set(exerciseDataDB, message);
-});
+function deleteRecord(exerciseName) {
+    let dataToDeleteFromDB = ref(database, `exercise_name/${exerciseName}`);
+    console.log({
+        [exerciseName]: exerciseData[exerciseName]
+    });
+    if (confirm(`Do you really want to delete data of ${exerciseName}`)) {
+        remove(dataToDeleteFromDB)
+            .then(function () {
+                alert(`Data for ${exerciseName} deleted successfully!`);
+                createDetailsView(exerciseData);
+                location.reload();
+            })
+            .catch(error => alert(error))
+    }
+}
