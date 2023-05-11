@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admission Form</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./index.css">
+    <!-- Custom CSS -->
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form class="form-container">
+            <h1 class="text-center mb-4">Admission Form</h1>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputActivationDate">Date</label>
+                    <input type="date" class="form-control" id="inputDate" placeholder="DD/MM/YYYY" required />
+                </div>
+
+                <div class="col-md-4"></div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputActivationDate">Activation Date</label>
+                    <input type="date" class="form-control" id="inputActivationDate" placeholder="DD/MM/YYYY"
+                        required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" class="form-control" id="inputFirstName" placeholder="Enter first name"
+                        required />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputMiddleName">Middle Name</label>
+                    <input type="text" class="form-control" id="inputMiddleName" placeholder="Enter middle name" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName" placeholder="Enter last name" required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Enter address" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputMobile">Mobile No.</label>
+                    <input type="tel" class="form-control" id="inputMobile" placeholder="Enter mobile number"
+                        required />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" required />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputDOB">DOB</label>
+                    <input type="date" class="form-control" id="inputDOB" placeholder="Enter date of birth" required />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputAge">Age</label>
+                    <input type="number" class="form-control" id="inputAge" placeholder="Enter age" required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputGender">Gender</label>
+                    <select id="inputGender" class="form-control" required>
+                        <option value="" selected disabled>Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputBloodGroup">Blood Group</label>
+                    <select id="inputBloodGroup" class="form-control" required>
+                        <option value="" selected disabled>Select blood group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputAnniversary">Date of Anniversary</label>
+                    <input type="date" class="form-control" id="inputAnniversary"
+                        placeholder="Enter date of anniversary" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-container mt-4 col-12">
+                    <div class="col-12 text-center mb-3">
+                        <h5 class="d-inline-block warning-text">
+                            Read the questions carefully and answer each one honestly
+                        </h5>
+                    </div>
+
+                    <div class="form-group">
+                        <ol class="question-container">
+                            <li>
+                                <span class="question">Has a doctor ever said that you have a heart condition and that
+                                    you should only do physical activity recommended by a doctor?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-1"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-1"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Do you feel pain in your chest while doing any physical
+                                    activity?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-2"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-2"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">In the past month, have you had chest pain when you were not
+                                    doing physical activity?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-3"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-3"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Do you lose your balance because of dizziness or do you ever lose
+                                    consciousness?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-4"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-4"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Do you have a bone or joint problem that could be made worse by a
+                                    change in your physical activity?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-5"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-5"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Is your doctor currently prescribing drugs for blood pressure or
+                                    heart condition?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-6"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-6"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Do you know of any other reason why you should not do physical
+                                    activity?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label"><input type="radio" name="question-7"
+                                            value="yes">Yes</label>
+                                    <label class="radio-label radio-no"><input type="radio" name="question-7"
+                                            value="no">No</label>
+                                </div>
+                            </li>
+                        </ol>
+
+                    </div>
+
+                    <div class="col-12 text-center mb-3">
+                        <h5 class="d-inline-block warning-text-lite">
+                            If you answered "yes" to one or more questions, talk with your doctor before you start
+                            becoming much more active or before you have a fitness test. Tell your doctor about the
+                            PAR-Q and which questions you answered "yes".
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn btn btn-block">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.
+        min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
