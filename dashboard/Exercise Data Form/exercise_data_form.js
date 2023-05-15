@@ -58,6 +58,7 @@ form.addEventListener('submit', function (event) {
     const gifLink = document.querySelector('#gif-link').value;
     const videoLink = document.querySelector('#video-link').value;
     const benefits = document.querySelector('#benefits').value;
+    const keywords = document.querySelector('#keywords').value;
 
     exerciseData[exerciseName] = {
         'Body Part': bodyPart,
@@ -71,7 +72,8 @@ form.addEventListener('submit', function (event) {
         'Images Link': imagesLink.split(',').map(link => link.trim()),
         'GIF Link': gifLink.split(',').map(link => link.trim()),
         'Video Link': videoLink,
-        'Benefits': benefits
+        'Benefits': benefits,
+        'Keywords': keywords
     };
 
     form.reset();
@@ -140,6 +142,10 @@ function createDetailsView(exerciseData) {
                     <div class="row">
                     <div class="col-md-4"><strong>Benefits:</strong></div>
                     <div class="col-md-8">${exerciseData[exerciseNameField]['Benefits']}</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-4"><strong>Keywords:</strong></div>
+                    <div class="col-md-8">${exerciseData[exerciseNameField]['keywords']}</div>
                     </div>
                     <div class="row">
                     <button type="submit" class="btn btn-primary btn-right" data-item="${exerciseName}_edit">Edit</button>
