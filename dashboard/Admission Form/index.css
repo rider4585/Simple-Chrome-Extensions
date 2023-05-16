@@ -1,15 +1,32 @@
+:root {
+    --background-color: #fefefe;
+    --primary-color: #ee0000;
+    --secondary-color: #000000;
+    --accent-color: #eaeaea;
+    --font-color: #323232;
+    --input-borders: #777777;
+
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
 
 body {
-    background-color: #1e1e1e;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .form-container {
-    margin-top: 50px;
-    border: 2px solid #ff4040;
+    margin: 15px 0;
+    border: 2px solid var(--primary-color);
     border-radius: 20px;
     padding: 30px;
 }
@@ -18,15 +35,19 @@ body {
     border-radius: 0.5em;
 }
 
+.form-control[readonly] {
+    background-color: var(--background-color);
+}
+
 .form-control:focus {
-    border-color: #ff4040;
-    /* box-shadow: 0px 0px 10px 10px #ff404063; */
+    border-color: var(--primary-color);
+    /* box-shadow: 0px 0px 10px 10px var(--primary-color)63; */
     box-shadow: none;
 }
 
 .submit-btn {
-    background-color: #ff4040;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--background-color);
     border: none;
     border-radius: 20px;
     padding: 10px 30px;
@@ -36,7 +57,7 @@ body {
 }
 
 .submit-btn:hover {
-    background-color: #ff4040;
+    background-color: var(--primary-color);
 }
 
 .warning-text-lite {
@@ -44,7 +65,10 @@ body {
 }
 
 .warning-text {
-    color: #ff4040;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 0.5em;
 }
 
 input[type="radio"] {
@@ -54,13 +78,13 @@ input[type="radio"] {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 2px solid #ff4040;
+    border: 2px solid var(--primary-color);
     outline: none;
     margin: 0 7px;
 }
 
 input[type="radio"]:checked {
-    background-color: #ff4040;
+    background-color: var(--primary-color);
 }
 
 .questions-container {
@@ -68,7 +92,7 @@ input[type="radio"]:checked {
 }
 
 .red-radio .custom-control-input:checked~.custom-control-label::before {
-    background-color: #ff4040;
+    background-color: var(--primary-color);
 }
 
 .radio-buttons {
@@ -85,6 +109,100 @@ input[type="radio"]:checked {
 
 .radio-no {
     margin-left: 3%;
+}
+
+input[type=text] {
+    border-radius: 0.5em;
+    /* display: block; */
+    /* width: 100%; */
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: var(--background-color);
+    background-clip: padding-box;
+    border: 1px solid var(--input-borders);
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+input[type=date],
+input[type=number],
+input[type=email],
+input[type=tel],
+select {
+    border: 1px solid var(--input-borders);
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    /* box-shadow: 0px 0px 10px 10px var(--primary-color)63; */
+    box-shadow: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.selected {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+}
+
+.input-box {
+    display: none;
+    margin-top: 10px;
+}
+
+.health-conditions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.medical-conditions {
+    display: flex;
+    flex-direction: column;
+    justify-content: centerS;
+}
+
+.admission-form-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yuwe-fitness-logo {
+    width: 50%;
+}
+
+.first-row {
+    margin-bottom: 2em;
+}
+
+.red-text {
+    color: var(--primary-color);
+}
+
+.consent-text {
+    font-weight: 600;
 }
 
 @media (max-width: 576px) {

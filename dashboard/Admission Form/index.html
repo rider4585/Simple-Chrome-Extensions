@@ -15,7 +15,17 @@
 <body>
     <div class="container-fluid">
         <form class="form-container">
-            <h1 class="text-center mb-4">Admission Form</h1>
+            <div class="form-row first-row">
+                <div class="form-group col-md-3 logo-div">
+                    <img src="./yuwe-fitness.png" class="yuwe-fitness-logo" alt="yuwe fitness logo">
+                </div>
+                <div class="form-group col-md-6 admission-form-heading">
+                    <h1 class="text-center mb-6">Admission Form</h1>
+                </div>
+                <div class="form-group col-md-3 logo-div">
+                    <img src="./yuwe-fitness.png" class="yuwe-fitness-logo" alt="yuwe fitness logo">
+                </div>
+            </div>
 
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -49,16 +59,17 @@
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-9">
                     <label for="inputAddress">Address</label>
                     <input type="text" class="form-control" id="inputAddress" placeholder="Enter address" required />
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-3">
                     <label for="inputMobile">Mobile No.</label>
                     <input type="tel" class="form-control" id="inputMobile" placeholder="Enter mobile number"
                         required />
                 </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputEmail">Email</label>
@@ -70,7 +81,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputAge">Age</label>
-                    <input type="number" class="form-control" id="inputAge" placeholder="Enter age" required />
+                    <input type="number" class="form-control" id="inputAge" placeholder="Enter age" readonly />
                 </div>
             </div>
 
@@ -186,7 +197,6 @@
                                 </div>
                             </li>
                         </ol>
-
                     </div>
 
                     <div class="col-12 text-center mb-3">
@@ -195,6 +205,217 @@
                             becoming much more active or before you have a fitness test. Tell your doctor about the
                             PAR-Q and which questions you answered "yes".
                         </h5>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <ol>
+                            <li>
+                                <span class="question">Are you currently doing any physical activity?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-1" value="yes">Yes
+                                    </label>
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-1" value="no">No
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Give details of your current physical activity:</span>
+                                <div>
+                                    <input type="text" name="question-2">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Have you done any physical activity before? Give details of the
+                                    same:</span>
+                                <div>
+                                    <input type="text" name="question-3">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Are you currently taking any medications? If yes, specify:</span>
+                                <div>
+                                    <input type="text" name="question-4">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Are you pregnant?</span>
+                                <div class="checkboxes">
+                                    <label class="checkbox-label rounded">
+                                        <input type="checkbox" name="question-5[]" value="yes">Yes
+                                    </label>
+                                    <label class="checkbox-label rounded">
+                                        <input type="checkbox" name="question-5[]" value="no">No
+                                    </label>
+                                    <label class="checkbox-label rounded">
+                                        <input type="checkbox" name="question-5[]" value="does_not_apply">Does not apply
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">If yes, how many months?</span>
+                                <div>
+                                    <input type="text" name="question-6">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Give the contact details of your physician:</span>
+                                <div>
+                                    <input type="text" name="question-7">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Person to contact in case of emergency:</span>
+                                <div>
+                                    <input type="text" name="emergency_contact_name" placeholder="Name">
+                                    <input type="text" name="emergency_contact_number" placeholder="Contact Number">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Have you gone through any surgery in the past 6 months?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-9" value="yes">Yes
+                                    </label>
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-9" value="no">No
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Give details of any injury caused by an accident:</span>
+                                <div>
+                                    <input type="text" name="question-10">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Give details of your alcohol consumption:</span>
+                                <div>
+                                    <input type="text" name="question-11">
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Do you smoke?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-12" value="yes">Yes
+                                    </label>
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-12" value="no">No
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="question">Does anyone in your family have a history of Diabetes/Heart
+                                    problems/Blood pressure/Stroke/High cholesterol/Osteoporosis/Asthma?</span>
+                                <div class="radio-buttons">
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-13" value="yes">Yes
+                                    </label>
+                                    <label class="radio-label rounded">
+                                        <input type="radio" name="question-13" value="no">No
+                                    </label>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                    <hr>
+                    <div class="form-group medical-conditions">
+                        <div class="col-12 text-center mb-3">
+                            <h5 class="d-inline-block warning-text">
+                                Please indicate any other medical conditions or activity restrictions that you have
+                            </h5>
+                        </div>
+                        <div class="col-12 text-center mb-3">
+                            <button class="button">Heart Disease</button>
+                            <button class="button">Limited Range of Motion</button>
+                            <button class="button">Chronic/Migraine Headaches</button>
+                            <button class="button">Diabetes</button>
+                            <button class="button">Joint Ligament, Tendon</button>
+                            <button class="button">Bursitis</button>
+                            <button class="button">High Blood Pressure</button>
+                            <button class="button">Hernia</button>
+                            <button class="button">Arthritis</button>
+                            <button class="button">High Cholesterol</button>
+                            <button class="button">Epilepsy or Seizures</button>
+                            <button class="button">Back Pain or Muscular Pull</button>
+                            <button class="button">Dizziness or Fainting</button>
+                            <button class="button">Swollen or Painful Joints</button>
+                            <button class="button">Emphysema</button>
+                            <button class="button">Respiratory Infections</button>
+                            <button class="button">Stroke</button>
+                            <button class="button">Hormonal Imbalance</button>
+                            <button class="button">Impaired Fasting glucose</button>
+                            <button class="button">Bronchitis</button>
+                            <button class="button">Allergies</button>
+                            <button class="button">Asthma</button>
+                            <button class="button">Shortness of Breath</button>
+                            <button class="button">Stomach Problem</button>
+                            <button class="button">Foot Problems</button>
+                            <button class="button">Gout</button>
+                            <button class="button" id="otherBtn">Other</button>
+                            <div id="inputBoxContainer" class="input-box">
+                                <input type="text" id="otherInput"
+                                    placeholder="Enter other conditions separated by commas">
+                            </div>
+                        </div>
+                        <!-- <button id="submitBtn" class="submit-btn btn">Submit</button> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-container mt-4 col-12">
+                    <div class="col-12 text-center mb-12">
+                        <h5 class="d-inline-block warning-text">
+                            Informed Consent & General Statement of Program Objectives and Procedures
+                        </h5>
+                    </div>
+                    <p class="d-inline-block col-12 text-center mb-12"> I understand that this physical fitness program
+                        includes exercises to build the cardio-respiratory system (heart and lungs), the
+                        muscular-skeletal system (muscular endurance and strength, and flexibility) and to improve body
+                        composition (an individual needs to lose fat, with an increase in weight of muscle and bone).
+                    </p>
+                    <p class="d-inline-block col-12 text-center mb-12"> Exercise may include aerobic activities
+                        (treadmill, walking, running, Jumping and other aerobic activities) and weightlifting to improve
+                        muscular strength and endurance and flexibility exercises to improve joint range of motion.</p>
+                    <div class="col-12 text-center mb-12">
+                        <input type="checkbox" id="consent-checkbox" name="consent-checkbox">
+                        <label for="consent-checkbox" class="consent-text">I agree and i know all the possible Potential
+                            Risks and Description of Potential Benefits</label>
+                    </div>
+                    <hr>
+                    <div class="col-12 text-center mb-12">
+                        <div class="col-12 text-center mb-12">
+                            <h5 class="d-inline-block red-text">
+                                Description of Potential Risks
+                            </h5>
+                        </div>
+                        <p class="d-inline-block col-12 text-center mb-12"> I understand that the reaction of the heart,
+                            lungs and blood vessel system to exercise cannot always be predicted with accuracy I know
+                            there is a risk of certain abnormal changes occurring during or following exercise, which
+                            may include abnormalities of blood pressure or heart attacks. Use of the weight lifting
+                            equipment may lead to muscular-skeletal strains, pain and injury I understand that the gym
+                            management and service providers shall not be liable for any damages arising from personal
+                            injuries sustained by me while and during the physical fitness-training program online as
+                            well as offline.</p>
+                        <p class="d-inline-block col-12 text-center mb-12"> I hereby fully and forever release and
+                            discharge the gym management from all claims, demands, damages, nights of action, present
+                            and future therein. I understand and warrant, release and agree that I am in good physical
+                            condition and that I have no disability, impairment or ailment preventing me from engaging
+                            in active or passive exercise that will be detrimental to heart safety, or comfort, or
+                            physical conditions if I engage or participate (other than those items fully discussed on
+                            Health History form) </p>
+
+                            <div class="col-12 text-center mb-12">
+                                <h5 class="d-inline-block red-text">
+                                    Description of Potential Benefits
+                                </h5>
+                            </div>
+                            <p class="d-inline-block col-12 text-center mb-12"> I understand that a program of regular exercise or the heart, lungs, muscles and joints, has many benefits associated with it.</p>
                     </div>
                 </div>
             </div>
@@ -208,6 +429,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.
         min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>
