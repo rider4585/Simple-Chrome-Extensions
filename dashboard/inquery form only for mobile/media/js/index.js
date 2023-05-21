@@ -112,7 +112,7 @@ class FormValidator {
 
     // Send form data to Flutter
     sendDataToFlutterFunction(formData) {
-        SendDataToFlutter.postMessage(data)
+        SendDataToFlutter.postMessage(formData)
     }
 }
 
