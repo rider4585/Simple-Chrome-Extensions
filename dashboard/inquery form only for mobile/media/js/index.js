@@ -13,7 +13,7 @@ class FormValidator {
                 const formData = this.getFormData();
                 console.log('Form submitted successfully!');
                 console.log(formData);
-                this.sendDataToFlutterFunction(formData);
+                this.sendDataToFlutterFunction(JSON.stringify(formData));
                 this.form.reset();
             }
         });
