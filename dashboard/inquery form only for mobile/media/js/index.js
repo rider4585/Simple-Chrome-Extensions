@@ -100,13 +100,16 @@ class FormValidator {
         const checkboxes = this.form.querySelectorAll('input[type="checkbox"]:checked');
         const services = Array.from(checkboxes).map(checkbox => checkbox.value);
 
+        const sendUpdateToWhatsApp = this.form.elements.sendUpdate.checked;
+
         return {
             name: this.form.elements.name.value.trim(),
             email: this.form.elements.email.value.trim(),
             phone: `+91${this.form.elements.phone.value.trim()}`,
             gender: this.form.elements.gender.value,
             services: services,
-            preferredTime: this.form.elements.preferredTime.value
+            preferredTime: this.form.elements.preferredTime.value,
+            sendUpdateToWhatsApp: sendUpdateToWhatsApp ? true : false
         };
     }
 
