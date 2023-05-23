@@ -183,6 +183,10 @@ input:focus {
     justify-content: center;
 }
 
+.admission-form{
+    font-weight: bold;
+}
+
 .logo-div {
     display: flex;
     justify-content: center;
@@ -203,6 +207,14 @@ input:focus {
 
 .consent-text {
     font-weight: 600;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: block;
 }
 
 @media (max-width: 576px) {
