@@ -4,91 +4,111 @@
 <head>
 	<title>Firebase Phone Auth</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="s stylesheet" href="../media/css/dashboard_login.css">
 </head>
 
 <body>
-	<div class="container">
-		<h1>Dashboard Control Login</h1>
-		<div id="phone-auth-form">
-			<div class="form-group">
-				<label for="phone">Phone Number:</label>
-				<input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+	<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+		<div class="card">
+			<div class="card-body">
+				<div class="text-center mb-4">
+					<img src="../media/img/watermark.png" alt="Logo" class="logo" width="150">
+				</div>
+
+				<div id="phone-auth-form">
+					<div class="form-group">
+						<label for="phone">Phone Number:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">+91</span>
+							</div>
+							<input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+								value="" required>
+						</div>
+					</div>
+					<div id="recaptcha-container"></div>
+					<button class="btn btn-primary btn-block" onclick="submitPhoneNumber()">Send OTP</button>
+				</div>
+
+
+				<div id="code-verification-form" style="display: none;">
+					<div class="form-group">
+						<label for="verification-code">Verification Code:</label>
+						<input type="text" class="form-control" id="verification-code"
+							placeholder="Enter the verification code">
+					</div>
+					<button class="btn btn-primary btn-block" onclick="submitVerificationCode()">Verify Code</button>
+				</div>
 			</div>
-			<div id="recaptcha-container"></div>
-			<button class="btn btn-primary" onclick="submitPhoneNumber()">Send Verification Code</button>
 		</div>
-		<div id="code-verification-form" style="display: none;">
-			<div class="form-group">
-				<label for="verification-code">Verification Code:</label>
-				<input type="text" class="form-control" id="verification-code"
-					placeholder="Enter the verification code">
-			</div>
-			<button class="btn btn-primary" onclick="submitVerificationCode()">Verify Code</button>
-		</div>
-	</div>
 
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-performance.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-remote-config.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-installations.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-performance.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-remote-config.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-installations.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
 
-	<script>
-		// Your web app's Firebase configuration
-		const firebaseConfig = {
-			apiKey: "AIzaSyAlkqBseMsKLwP4HsSqATHSry17PQqYNTg",
-			authDomain: "yuwe-fitness.firebaseapp.com",
-			databaseURL: "https://yuwe-fitness-default-rtdb.asia-southeast1.firebasedatabase.app",
-			projectId: "yuwe-fitness",
-			storageBucket: "yuwe-fitness.appspot.com",
-			messagingSenderId: "411480626389",
-			appId: "1:411480626389:web:accc7f74bb1568d3007e5c",
-			measurementId: "G-V4G0LYXZX6"
-		};
-		// Initialize Firebase
-		firebase.initializeApp(firebaseConfig);
+		<script>
+			// Your web app's Firebase configuration
+			const firebaseConfig = {
+				apiKey: "AIzaSyAlkqBseMsKLwP4HsSqATHSry17PQqYNTg",
+				authDomain: "yuwe-fitness.firebaseapp.com",
+				databaseURL: "https://yuwe-fitness-default-rtdb.asia-southeast1.firebasedatabase.app",
+				projectId: "yuwe-fitness",
+				storageBucket: "yuwe-fitness.appspot.com",
+				messagingSenderId: "411480626389",
+				appId: "1:411480626389:web:accc7f74bb1568d3007e5c",
+				measurementId: "G-V4G0LYXZX6"
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
 
-		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
 
-		function submitPhoneNumber() {
-			var phoneNumber = document.getElementById('phone').value;
-			var appVerifier = window.recaptchaVerifier;
+			function submitPhoneNumber() {
+				var phoneNumber = `+91${document.getElementById('phone').value}`;
+				var appVerifier = window.recaptchaVerifier;
+				if (phoneNumber == "+91") {
+					alert("Please Enter Your Phone Number")
+				} else if (phoneNumber.length !== 13) {
+					alert("Invalid Mobile Number")
+				} else {
+					firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+						.then(function (confirmationResult) {
+							window.confirmationResult = confirmationResult;
+							document.getElementById('phone-auth-form').style.display = 'none';
+							document.getElementById('code-verification-form').style.display = 'block';
+						})
+						.catch(function (error) {
+							console.error('Error during sign in with phone number', error);
+							alert(error.message)
+						});
+				}
+			}
 
-			firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-				.then(function (confirmationResult) {
-					window.confirmationResult = confirmationResult;
-					document.getElementById('phone-auth-form').style.display = 'none';
-					document.getElementById('code-verification-form').style.display = 'block';
-				})
-				.catch(function (error) {
-					console.error('Error during sign in with phone number', error);
-					alert(error.message)
-				});
-		}
+			function submitVerificationCode() {
+				var verificationCode = document.getElementById('verification-code').value;
+				window.confirmationResult.confirm(verificationCode)
+					.then(function (result) {
+						console.log('Phone number verified');
+						// Perform any further actions after verification
+						sessionStorage.setItem("loggedIn", true);
+						window.location.href = "../index.html";
 
-		function submitVerificationCode() {
-			var verificationCode = document.getElementById('verification-code').value;
-			window.confirmationResult.confirm(verificationCode)
-				.then(function (result) {
-					console.log('Phone number verified');
-					// Perform any further actions after verification
-					sessionStorage.setItem("loggedIn", true);
-					window.location.href = "../index.html";
-
-				})
-				.catch(function (error) {
-					console.error('Error during verification', error);
-					alert(error)
-				});
-		}
-	</script>
+					})
+					.catch(function (error) {
+						console.error('Error during verification', error);
+						alert(error)
+					});
+			}
+		</script>
 </body>
 
 </html>

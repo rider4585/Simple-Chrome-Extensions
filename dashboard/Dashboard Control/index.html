@@ -52,7 +52,7 @@
         body {
             background-color: var(--background-color);
             color: var(--text-color);
-            background-image: url('watermark.png');
+            background-image: url('./media/img/watermark.png');
             background-repeat: no-repeat;
             background-size: auto 90vh;
             background-position: center;
@@ -109,7 +109,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <a href="exercise.html" class="text-decoration-none">
+                <a href="./Exercise Data Form/exercise_data_form.html" class="text-decoration-none">
                     <div class="card mb-4 dark-mode light-mode">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-dumbbell accent-color"></i> Exercise Data Form</h5>
@@ -120,7 +120,7 @@
             </div>
 
             <div class="col-md-4">
-                <a href="inquiry.html" class="text-decoration-none">
+                <a href="./Inquiry Form/index.html" class="text-decoration-none">
                     <div class="card mb-4 dark-mode light-mode">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-question-circle accent-color"></i> Inquiry Form</h5>
@@ -131,7 +131,7 @@
             </div>
 
             <div class="col-md-4">
-                <a href="receipt.html" class="text-decoration-none">
+                <a href="./Receipt/index.html" class="text-decoration-none">
                     <div class="card mb-4 dark-mode light-mode">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-receipt accent-color"></i> Receipt</h5>
@@ -142,7 +142,7 @@
             </div>
 
             <div class="col-md-4">
-                <a href="timetable.html" class="text-decoration-none">
+                <a href="./timetable/index.html" class="text-decoration-none">
                     <div class="card mb-4 dark-mode light-mode">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-calendar-alt accent-color"></i> Timetable</h5>
@@ -153,7 +153,7 @@
             </div>
 
             <div class="col-md-4">
-                <a href="offers.html" class="text-decoration-none">
+                <a href="./Offers Dashboard/index.html" class="text-decoration-none">
                     <div class="card mb-4 dark-mode light-mode">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-gift accent-color"></i> Offers</h5>
@@ -164,7 +164,7 @@
             </div>
 
             <div class="col-md-4">
-                <a href="services.html" class="text-decoration-none">
+                <a href="./Services Dashboard/index.html" class="text-decoration-none">
                     <div class="card mb-4 dark-mode light-mode">
                         <div class="card-body">
                             <h5 class="card-title"><i class="fas fa-cogs accent-color"></i> Services</h5>
@@ -180,7 +180,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
+    <!-- <script>
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            sessionStorage.removeItem("loggedIn");
+        });
         // Logout functionality
         document.getElementById("logout-btn").addEventListener("click", function () {
             // Clear the logged-in flag from sessionStorage
@@ -219,7 +223,7 @@
         // Start the inactivity timer when the page is loaded or clicked
         window.addEventListener("load", startInactivityTimer);
         window.addEventListener("click", startInactivityTimer);
-    </script>
+    </script> -->
 
 </body>
 
