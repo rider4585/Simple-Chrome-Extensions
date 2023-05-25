@@ -1,0 +1,10 @@
+{
+    "name": "Hello World App",
+    "short_name": "Hello World",
+    "description": "A simple Hello World app",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000"
+  }
+  
