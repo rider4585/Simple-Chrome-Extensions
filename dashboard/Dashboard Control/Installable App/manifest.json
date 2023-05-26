@@ -5,6 +5,13 @@
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#ffffff",
+    "icons":[
+      {
+          "src": "./Papirus-Team-Papirus-Apps-Pingus-icon.512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+    ],
     "theme_color": "#000000"
   }
   
