@@ -42,6 +42,7 @@ class FormValidator {
         const email = this.form.elements.email.value.trim();
         const phone = this.form.elements.phone.value.trim();
         const gender = this.form.elements.gender.value;
+        const goals = this.form.elements.goals.value;
         const preferredTime = this.form.elements.preferredTime.value;
 
         // Name validation
@@ -109,6 +110,7 @@ class FormValidator {
             gender: this.form.elements.gender.value,
             services: services,
             preferredTime: this.form.elements.preferredTime.value,
+            goals: this.form.elements.goals.value,
             sendUpdateToWhatsApp: sendUpdateToWhatsApp ? true : false
         };
     }
@@ -122,3 +124,7 @@ class FormValidator {
 // Create an instance of FormValidator and initialize it
 const formValidator = new FormValidator('enquiryForm', 'alertContainer');
 formValidator.initialize();
+
+function isThisYuWeWebPage() {
+    return true;
+}

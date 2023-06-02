@@ -1,4 +1,4 @@
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
 
@@ -17,7 +17,7 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #edf2f7;
+    background-color: #e2e2e2;
     color: black;
     border-radius: 5px 5px 5px 5px !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -92,6 +92,30 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.phone-label,
+.otp-label {
+    color: #0000008f;
+}
+
+#phone {
+    box-shadow: none;
+}
+
+#phone:focus {
+    border: 1px rgb(255, 53, 53) solid;
+}
+
+#verification-code {
+    box-shadow: none;
+    text-align: center;
+    letter-spacing: 0.5em;
+}
+
+#verification-code:focus {
+    border: 1px red solid;
+    outline: none;
 }
 
 /* =================== */

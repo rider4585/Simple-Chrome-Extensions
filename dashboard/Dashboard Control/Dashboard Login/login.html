@@ -17,7 +17,7 @@
 
 				<div id="phone-auth-form">
 					<div class="form-group">
-						<label for="phone">Phone Number:</label>
+						<label for="phone" class="phone-label">Phone Number:</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">+91</span>
@@ -33,9 +33,8 @@
 
 				<div id="code-verification-form" style="display: none;">
 					<div class="form-group">
-						<label for="verification-code">Verification Code:</label>
-						<input type="text" class="form-control" id="verification-code"
-							placeholder="Enter the verification code">
+						<label for="verification-code" class="otp-label">Verification Code:</label>
+						<input type="number" class="form-control" id="verification-code" placeholder="000000">
 					</div>
 					<button class="btn btn-primary btn-block" onclick="submitVerificationCode()">Verify Code</button>
 				</div>
@@ -54,61 +53,8 @@
 		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-installations.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
-
-		<script>
-			// Your web app's Firebase configuration
-			const firebaseConfig = {
-				apiKey: "AIzaSyAlkqBseMsKLwP4HsSqATHSry17PQqYNTg",
-				authDomain: "yuwe-fitness.firebaseapp.com",
-				databaseURL: "https://yuwe-fitness-default-rtdb.asia-southeast1.firebasedatabase.app",
-				projectId: "yuwe-fitness",
-				storageBucket: "yuwe-fitness.appspot.com",
-				messagingSenderId: "411480626389",
-				appId: "1:411480626389:web:accc7f74bb1568d3007e5c",
-				measurementId: "G-V4G0LYXZX6"
-			};
-			// Initialize Firebase
-			firebase.initializeApp(firebaseConfig);
-
-			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-
-			function submitPhoneNumber() {
-				var phoneNumber = `+91${document.getElementById('phone').value}`;
-				var appVerifier = window.recaptchaVerifier;
-				if (phoneNumber == "+91") {
-					alert("Please Enter Your Phone Number")
-				} else if (phoneNumber.length !== 13) {
-					alert("Invalid Mobile Number")
-				} else {
-					firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-						.then(function (confirmationResult) {
-							window.confirmationResult = confirmationResult;
-							document.getElementById('phone-auth-form').style.display = 'none';
-							document.getElementById('code-verification-form').style.display = 'block';
-						})
-						.catch(function (error) {
-							console.error('Error during sign in with phone number', error);
-							alert(error.message)
-						});
-				}
-			}
-
-			function submitVerificationCode() {
-				var verificationCode = document.getElementById('verification-code').value;
-				window.confirmationResult.confirm(verificationCode)
-					.then(function (result) {
-						console.log('Phone number verified');
-						// Perform any further actions after verification
-						sessionStorage.setItem("loggedIn", true);
-						window.location.href = "../index.html";
-
-					})
-					.catch(function (error) {
-						console.error('Error during verification', error);
-						alert(error)
-					});
-			}
-		</script>
+		<script src="../media/js/firebase_setup.js"></script>
+		<script src="../media/js/dashboard_login.js"></script>
 </body>
 
 </html>

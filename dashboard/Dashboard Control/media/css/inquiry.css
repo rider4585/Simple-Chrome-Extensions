@@ -49,22 +49,23 @@ body {
 
 .heading {
     margin-top: 1em;
+    font-weight: bolder;
 }
 
 #phone {
     border-radius: 0 0.3em 0.3em 0;
 }
 
-.services{
+.services {
     display: flex;
     flex-direction: column;
 }
 
-.service-item{
+.service-item {
     margin-left: 0.5em;
 }
 
-.service-item > label{
+.service-item>label {
     padding: 0.5em;
 }
 

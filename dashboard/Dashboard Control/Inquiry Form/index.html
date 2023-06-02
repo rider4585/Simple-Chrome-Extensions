@@ -11,7 +11,7 @@
 
 <body>
     <div class="container-fluid">
-        <h2 class="center heading">Yuwe Fitness</h2>
+        <h2 class="center heading">YuWe Fitness</h2>
         <form id="enquiryForm">
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -68,6 +68,10 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="additionalComments">What is Your Goal:</label>
+                <textarea class="form-control red-border" id="goals"></textarea>
+            </div>
+            <div class="form-group">
                 <label for="preferredTime">Preferred Time to Contact:</label>
                 <select class="form-control red-border" id="preferredTime" required>
                     <option value="" disabled selected>Select</option>
@@ -90,6 +94,7 @@
     </div>
     <div id="alertContainer" class="alert-container"></div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../media/js/inquiry.js"></script>
 
