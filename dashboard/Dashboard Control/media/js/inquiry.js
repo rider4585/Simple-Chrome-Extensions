@@ -110,7 +110,7 @@ class FormValidator {
             gender: this.form.elements.gender.value,
             services: services,
             preferredTime: this.form.elements.preferredTime.value,
-            goals: this.form.elements.goals.value,
+            goal: this.form.elements.goals.value,
             sendUpdateToWhatsApp: sendUpdateToWhatsApp ? true : false
         };
     }
