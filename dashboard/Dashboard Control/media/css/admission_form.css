@@ -24,6 +24,10 @@ hr {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+label {
+    margin-left: 0.5rem;
+}
+
 .form-container {
     margin: 15px 0;
     border: 2px solid var(--primary-color);
@@ -183,7 +187,7 @@ input:focus {
     justify-content: center;
 }
 
-.admission-form{
+.admission-form {
     font-weight: bold;
 }
 
@@ -209,11 +213,11 @@ input:focus {
     font-weight: 600;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.show{
+.show {
     display: block;
 }
 
