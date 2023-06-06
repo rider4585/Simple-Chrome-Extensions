@@ -94,6 +94,19 @@ body {
     align-items: center;
 }
 
+.otp-sent {
+    text-align: center;
+    font-size: 0.8em;
+    margin: 0;
+    padding-top: 5px;
+    color: #00000080;
+}
+
+.mobile-number {
+    font-weight: normal;
+    color: #000000cb;
+}
+
 .phone-label,
 .otp-label {
     color: #0000008f;
