@@ -26,20 +26,6 @@
 
             <!-- // -->
             <div class="section-one">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputActivationDate">Date</label>
-                        <input type="date" class="form-control" id="inputDate" placeholder="DD/MM/YYYY" required />
-                    </div>
-
-                    <div class="col-md-4"></div>
-
-                    <div class="form-group col-md-4">
-                        <label for="inputActivationDate">Activation Date</label>
-                        <input type="date" class="form-control" id="inputActivationDate" placeholder="DD/MM/YYYY"
-                            required />
-                    </div>
-                </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
@@ -59,31 +45,27 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group col-md-9">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Enter address"
-                            required />
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputMobile">Mobile No.</label>
-                        <input type="tel" class="form-control" id="inputMobile" placeholder="Enter mobile number"
-                            required />
-                    </div>
-                </div>
-
-                <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputEmail">Email</label>
                         <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" required />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputMobile">Mobile No.</label>
+                        <input type="tel" class="form-control" id="inputMobile" placeholder="Enter mobile number"
+                            required />
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputDOB">DOB</label>
                         <input type="date" class="form-control" id="inputDOB" placeholder="Enter date of birth"
                             required />
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputAge">Age</label>
-                        <input type="number" class="form-control" id="inputAge" placeholder="Enter age" readonly />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputAddress">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Enter address"
+                            required />
                     </div>
                 </div>
 
@@ -112,23 +94,42 @@
                         </select>
                     </div>
                     <div class="form-group col-md-4">
+                        <label for="inputMaritalStatus">Marital Status</label>
+                        <select id="inputMaritalStatus" class="form-control" required>
+                            <option value="" selected disabled>Select marital status</option>
+                            <option>Single</option>
+                            <option>Married</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                    </div>
+
+                    <div class="form-group col-md-4 inputAnniversaryDiv hide">
                         <label for="inputAnniversary">Date of Anniversary</label>
                         <input type="date" class="form-control" id="inputAnniversary"
                             placeholder="Enter date of anniversary" />
+                    </div>
+
+                    <div class="form-group col-md-4">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-3"></div>
                     <div class="form-group col-md-6">
-                        <button type="button" class="submit-btn btn btn-block section-one-btn">Submit</button>
+                        <button type="button" class="submit-btn btn btn-block section-one-btn">Next</button>
                     </div>
                     <div class="form-group col-md-3"></div>
                 </div>
             </div>
 
             <!-- // -->
-            <div class="form-row section-two hide">
+            <div class="section-two hide form-row">
                 <div class="form-container mt-4 col-12">
                     <div class="col-12 text-center mb-3">
                         <h5 class="d-inline-block warning-text">
@@ -236,21 +237,21 @@
                             </li>
                             <li>
                                 <span class="question">Give details of your current physical activity:</span>
-                                <div>
-                                    <input type="text" name="section-two-question-2">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-2" class="form-control">
                                 </div>
                             </li>
                             <li>
                                 <span class="question">Have you done any physical activity before? Give details of the
                                     same:</span>
-                                <div>
-                                    <input type="text" name="section-two-question-3">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-3" class="form-control">
                                 </div>
                             </li>
                             <li>
                                 <span class="question">Are you currently taking any medications? If yes, specify:</span>
-                                <div>
-                                    <input type="text" name="section-two-question-4">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-4" class="form-control">
                                 </div>
                             </li>
                             <li>
@@ -270,21 +271,27 @@
                             </li>
                             <li>
                                 <span class="question">If yes, how many months?</span>
-                                <div>
-                                    <input type="text" name="section-two-question-6">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-6" class="form-control">
                                 </div>
                             </li>
                             <li>
                                 <span class="question">Give the contact details of your physician:</span>
-                                <div>
-                                    <input type="text" name="section-two-question-7">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-7" class="form-control">
                                 </div>
                             </li>
                             <li>
                                 <span class="question">Person to contact in case of emergency:</span>
-                                <div>
-                                    <input type="text" name="emergency_contact_name" placeholder="Name">
-                                    <input type="text" name="emergency_contact_number" placeholder="Contact Number">
+                                <div class="form-row col-md-8">
+                                    <div class="col-md-3">
+                                        <input type="text" name="emergency_contact_name" placeholder="Name"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" name="emergency_contact_number" placeholder="Contact Number"
+                                            class="form-control">
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -300,14 +307,14 @@
                             </li>
                             <li>
                                 <span class="question">Give details of any injury caused by an accident:</span>
-                                <div>
-                                    <input type="text" name="section-two-question-9">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-9" class="form-control">
                                 </div>
                             </li>
                             <li>
                                 <span class="question">Give details of your alcohol consumption:</span>
-                                <div>
-                                    <input type="text" name="section-two-question-10">
+                                <div class="col-md-3">
+                                    <input type="text" name="section-two-question-10" class="form-control">
                                 </div>
                             </li>
                             <li>
@@ -373,7 +380,8 @@
                             <button class="button medical-condition-btn">Gout</button>
                             <button class="button" id="otherBtn">Other</button>
                             <div id="inputBoxContainer" class="input-box medical-condition-input">
-                                <input type="text" id="otherInput" placeholder="Enter other conditions separated by commas">
+                                <input type="text" id="otherInput"
+                                    placeholder="Enter other conditions separated by commas">
                             </div>
                         </div>
                     </div>
@@ -381,7 +389,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-3"></div>
                         <div class="form-group col-md-6">
-                            <button type="button" class="submit-btn btn btn-block section-two-btn">Submit</button>
+                            <button type="button" class="submit-btn btn btn-block section-two-btn">Next</button>
                         </div>
                         <div class="form-group col-md-3"></div>
                     </div>
@@ -389,7 +397,7 @@
             </div>
 
             <!-- // -->
-            <div class="form-row  section-three hide">
+            <div class="section-three hide form-row">
                 <div class="form-container mt-4 col-12">
                     <div class="col-12 text-center mb-12">
                         <h5 class="d-inline-block warning-text">
@@ -443,14 +451,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-3"></div>
                         <div class="form-group col-md-6">
-                            <button type="button" class="submit-btn btn btn-block section-three-btn submit-complete-form">Submit</button>
+                            <button type="button"
+                                class="submit-btn btn btn-block section-three-btn submit-complete-form">Submit</button>
                         </div>
                         <div class="form-group col-md-3"></div>
                     </div>
                 </div>
             </div>
-
-            <!-- <button type="submit" class="submit-btn btn btn-block">Submit</button> -->
         </form>
     </div>
 
