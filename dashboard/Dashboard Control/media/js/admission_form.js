@@ -118,7 +118,6 @@ class Form {
         this.masterJSON.formFilledDate = "";
         this.masterJSON.activationDate = "";
 
-        console.log(sectionOneFormData);
         return sectionOneFormData;
     }
 
@@ -190,15 +189,16 @@ class Form {
         }
     }
 
-    setData(fName, mName, lName, mobileNo) {
-        document.getElementById("inputFirstName").value = fName;
-        document.getElementById("inputMiddleName").value = mName;
-        document.getElementById("inputLastName").value = lName;
-        document.getElementById("inputMobile").value = mobileNo;
+    setData(data) {
+        document.getElementById("inputFirstName").value = data['fName'];
+        document.getElementById("inputMiddleName").value = data['mName'];
+        document.getElementById("inputLastName").value = data['lName'];
+        document.getElementById("inputMobile").value = data['mobileNo'];
     }
 
     sendData(formData) {
-        SendDataToFlutter.postMessage(formData)
+        console.log(formData);
+        SendDataToFlutter.postMessage(formData);
     }
 }
 
@@ -206,4 +206,9 @@ const form = new Form();
 
 function isThisYuWeWebPage() {
     return true;
+}
+
+function setData(data) {
+    const newForm = new Form();
+    newForm.setData(data);
 }
