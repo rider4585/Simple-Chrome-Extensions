@@ -186,11 +186,11 @@ class Form {
 
     setData(data) {
         if (data != "" && data != null && data != undefined) {
-            if (data['name'] != "") {
+            if (data.hasOwnProperty('name')) {
                 document.getElementById("inputFullName").value = data['name'];
             }
 
-            if (data['phoneNumber'] != "") {
+            if (data.hasOwnProperty('phoneNumber')) {
                 document.getElementById("inputMobile").value = data['phoneNumber'];
             }
         }
