@@ -102,9 +102,7 @@ class Form {
     generateJSONForSectionOne() {
         let sectionOneFormData = {};
 
-        sectionOneFormData.fName = document.getElementById("inputFirstName").value;
-        sectionOneFormData.mName = document.getElementById("inputMiddleName").value;
-        sectionOneFormData.lName = document.getElementById("inputLastName").value;
+        sectionOneFormData.name = document.getElementById("inputFullName").value;
         sectionOneFormData.address = document.getElementById("inputAddress").value;
         sectionOneFormData.phoneNumber = document.getElementById("inputMobile").value;
         sectionOneFormData.email = document.getElementById("inputEmail").value;
@@ -114,9 +112,6 @@ class Form {
         sectionOneFormData.bloodGroup = document.getElementById("inputBloodGroup").value;
         sectionOneFormData.maritalStatus = document.getElementById("inputMaritalStatus").value;
         sectionOneFormData.anniversaryDate = this.getAnniversaryDate();
-
-        this.masterJSON.formFilledDate = "";
-        this.masterJSON.activationDate = "";
 
         return sectionOneFormData;
     }
@@ -145,13 +140,13 @@ class Form {
             "question-5": document.querySelector('input[name="section-two-question-5"]:checked').value,
             "question-6": document.querySelector('input[name="section-two-question-6"]').value,
             "question-7": document.querySelector('input[name="section-two-question-7"]').value,
-            "emergency_contact_name": document.querySelector('input[name="emergency_contact_name"]').value,
-            "emergency_contact_number": document.querySelector('input[name="emergency_contact_number"]').value,
             "question-9": document.querySelector('input[name="section-two-question-8"]:checked').value,
             "question-10": document.querySelector('input[name="section-two-question-9"]').value,
             "question-11": document.querySelector('input[name="section-two-question-10"]').value,
             "question-12": document.querySelector('input[name="section-two-question-11"]:checked').value,
-            "question-13": document.querySelector('input[name="section-two-question-12"]:checked').value
+            "question-13": document.querySelector('input[name="section-two-question-12"]:checked').value,
+            "emergency_contact_name": document.querySelector('input[name="emergency_contact_name"]').value,
+            "emergency_contact_number": document.querySelector('input[name="emergency_contact_number"]').value
         }
 
     }
@@ -190,10 +185,22 @@ class Form {
     }
 
     setData(data) {
-        document.getElementById("inputFirstName").value = data['fName'];
-        document.getElementById("inputMiddleName").value = data['mName'];
-        document.getElementById("inputLastName").value = data['lName'];
-        document.getElementById("inputMobile").value = data['mobileNo'];
+        if (data != "" && data != null && data != undefined) {
+            if (data['name'] != "") {
+                document.getElementById("inputFirstName").value = data['name'];
+            } else {
+                document.getElementById("inputFirstName").value = "";
+            }
+
+            if (data['mobileNo'] != "") {
+                document.getElementById("inputMobile").value = data['mobileNo'];
+            } else {
+                document.getElementById("inputMobile").value = "";
+            }
+        } else {
+            document.getElementById("inputMobile").value = "";
+            document.getElementById("inputFirstName").value = "";
+        }
     }
 
     sendData(formData) {
