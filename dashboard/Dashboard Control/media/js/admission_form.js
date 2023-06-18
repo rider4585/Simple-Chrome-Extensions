@@ -192,8 +192,8 @@ class Form {
                 document.getElementById("inputFirstName").value = "";
             }
 
-            if (data['mobileNo'] != "") {
-                document.getElementById("inputMobile").value = data['mobileNo'];
+            if (data['phoneNumber'] != "") {
+                document.getElementById("inputMobile").value = data['phoneNumber'];
             } else {
                 document.getElementById("inputMobile").value = "";
             }
