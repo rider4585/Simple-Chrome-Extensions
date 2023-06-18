@@ -187,19 +187,12 @@ class Form {
     setData(data) {
         if (data != "" && data != null && data != undefined) {
             if (data['name'] != "") {
-                document.getElementById("inputFirstName").value = data['name'];
-            } else {
-                document.getElementById("inputFirstName").value = "";
+                document.getElementById("inputFullName").value = data['name'];
             }
 
             if (data['phoneNumber'] != "") {
                 document.getElementById("inputMobile").value = data['phoneNumber'];
-            } else {
-                document.getElementById("inputMobile").value = "";
             }
-        } else {
-            document.getElementById("inputMobile").value = "";
-            document.getElementById("inputFirstName").value = "";
         }
     }
 
