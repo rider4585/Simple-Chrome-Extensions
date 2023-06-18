@@ -202,8 +202,6 @@ class Form {
     }
 }
 
-const form = new Form();
-
 function isThisYuWeWebPage() {
     return true;
 }
