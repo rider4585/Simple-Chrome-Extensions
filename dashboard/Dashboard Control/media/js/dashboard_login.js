@@ -54,3 +54,10 @@ function submitVerificationCode() {
             alert(error)
         });
 }
+
+document.addEventListener('DOMContentLoaded', function(){
+    if (sessionStorage.getItem("loggedIn")) {
+        // Redirect to the dashboard or home page
+        sessionStorage.removeItem("loggedIn");
+    }
+})
