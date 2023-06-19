@@ -55,6 +55,7 @@
 
 #brush {
     background-image: url(../images/background.jpg);
+    background-size: contain;
     -webkit-background-clip: text;
     color: transparent;
     position: absolute;
