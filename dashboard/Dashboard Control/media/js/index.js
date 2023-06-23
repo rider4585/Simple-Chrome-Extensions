@@ -1,12 +1,3 @@
-// Logout functionality
-document.getElementById("logout-btn").addEventListener("click", function () {
-    // Clear the logged-in flag from sessionStorage
-    sessionStorage.removeItem("loggedIn");
-
-    // Redirect to login page
-    window.location.href = "./Dashboard Login/login.html";
-});
-
 // Check if the user is logged in
 if (!sessionStorage.getItem("loggedIn")) {
     // Redirect to login page if not logged in
