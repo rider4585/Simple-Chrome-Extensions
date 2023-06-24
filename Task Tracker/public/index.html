@@ -7,20 +7,55 @@
     <link rel="stylesheet" href="./index.css">
     <title>Task Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
 </head>
 
 <body>
 
     <main>
         <section id="tasks" class="task-section">
-            <h2>Tasks</h2>
-            <!-- Task content goes here -->
+            <div class="task-list"></div>
+            <div class="add-button-container" id="add-task">
+                <button type="button" class="add-button" onclick="openPopup()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="modal task-modal hide">
+                <div class="form">
+                    <div class="close-btn-container">
+                        <button type="button" class="cancel-button" onclick="closePopup()">
+                            <i class="fas fa-times cancel"></i>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-name" class="label">Task Name</label>
+                        <input type="text" id="task-name" name="task-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description" class="label">Description</label>
+                        <textarea name="task-description" id="task-description" rows="5"></textarea>
+                    </div>
+                    <div class="form-group" id="sub-tasks-container">
+                        <label for="subTasks" class="label">To Do List</label>
+                        <input type="text" class="subTask" id="subTasks" name="subTasks">
+                    </div>
+
+                    <div class="form-group" id="add-task-container">
+                        <button type="button" class="add-task-btn" onclick="addSubTask()">Add To Do</button>
+                    </div>
+
+                    <div class="btn-control">
+                        <button class="save-btn" onclick="saveTask()">Save</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="ideas" class="idea-section">
-            <h2>Ideas</h2>
-            <!-- Idea content goes here -->
+            <div class="add-button-container" id="add-idea">
+                <button type="button" class="add-button">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </section>
     </main>
 
