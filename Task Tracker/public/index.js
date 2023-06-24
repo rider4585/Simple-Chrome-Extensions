@@ -33,6 +33,6 @@ const tasksNavItem = document.querySelector('.nav-item[href="#tasks"]');
 tasksNavItem.classList.add('active');
 scrollToSection(tasksNavItem.getAttribute('href'));
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('main').style.height = `calc(100vh - ${document.querySelector('.footer').offsetHeight})`;
-})
+// document.addEventListener('DOMContentLoaded', function () {
+//   document.querySelector('main').style.height = `calc(100dvh - ${document.querySelector('footer').clientHeight})`;
+// })
