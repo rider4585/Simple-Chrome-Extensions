@@ -211,4 +211,4 @@ function setData(data) {
     newForm.setData(data);
 }
 
-setData({'name':'ravi'});
+// setData({'name':'ravi'});
