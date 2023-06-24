@@ -197,8 +197,8 @@ class Form {
     }
 
     sendData(formData) {
-        console.log(formData);
-        SendDataToFlutter.postMessage(formData);
+        console.log(JSON.stringify(formData));
+        SendDataToFlutter.postMessage(JSON.stringify(formData));
     }
 }
 
@@ -210,3 +210,5 @@ function setData(data) {
     const newForm = new Form();
     newForm.setData(data);
 }
+
+setData({'name':'ravi'});
