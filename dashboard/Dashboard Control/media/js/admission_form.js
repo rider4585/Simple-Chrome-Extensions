@@ -104,7 +104,7 @@ class Form {
 
         sectionOneFormData.name = document.getElementById("inputFullName").value;
         sectionOneFormData.address = document.getElementById("inputAddress").value;
-        sectionOneFormData.phoneNumber = document.getElementById("inputMobile").value;
+        sectionOneFormData.phoneNumber = `+91${document.getElementById("inputMobile").value}`;
         sectionOneFormData.email = document.getElementById("inputEmail").value;
         sectionOneFormData.selectedBirthDate = document.getElementById("inputDOB").value;
         sectionOneFormData.age = this.calculateAge();
@@ -112,6 +112,7 @@ class Form {
         sectionOneFormData.bloodGroup = document.getElementById("inputBloodGroup").value;
         sectionOneFormData.maritalStatus = document.getElementById("inputMaritalStatus").value;
         sectionOneFormData.anniversaryDate = this.getAnniversaryDate();
+        console.log(sectionOneFormData);
 
         return sectionOneFormData;
     }
