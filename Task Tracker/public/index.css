@@ -8,7 +8,7 @@
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 /* General Styling */
@@ -18,14 +18,12 @@ body {
   color: #3D5A80;
   margin: 0;
   overflow: hidden;
-  /* Prevent horizontal scrolling */
 }
 
 /* Main Section Styling */
 main {
   position: relative;
   overflow: hidden;
-  /* Hide scrollbars */
 }
 
 .task-section,
@@ -38,14 +36,11 @@ main {
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
-  overflow: auto;
-  /* Enable scrolling within sections */
 }
 
 
 #ideas {
   transform: translateX(100%);
-  /* Initially hide ideas section */
 }
 
 /* Footer Styling */
@@ -74,7 +69,6 @@ main {
   text-decoration: none;
   color: #F5F5F5;
   opacity: 0.6;
-  /* Lower opacity for inactive nav items */
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -82,9 +76,30 @@ main {
   opacity: 1;
 }
 
+.empty-task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  /* Adjust the height as needed */
+}
+
+.empty-task-icon {
+  font-size: 2em;
+  margin-bottom: 1rem;
+}
+
+.empty-task-text {
+  text-align: center;
+}
+
+
 .task-list {
   width: 100%;
   height: 100%;
+  overflow: scroll;
 }
 
 .task-section {
@@ -132,7 +147,8 @@ main {
   z-index: 2;
 }
 
-.form {
+.form,
+.delete-popup {
   width: calc(100% - 80px);
   margin: 20% 20px 0 20px;
   padding: 0px 20px 20px 20px;
@@ -209,6 +225,7 @@ main {
   color: white;
   outline: none;
   border: none;
+  font-size: 1em;
   border-radius: 4px;
   padding: 5px 10px;
 }
@@ -228,6 +245,10 @@ main {
 
 .add-task-btn:active {
   color: black;
+}
+
+textarea {
+  resize: none !important;
 }
 
 .subTask {
@@ -255,4 +276,36 @@ summary {
   font-size: 1.5em;
   font-weight: bold;
   padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-icons i {
+  padding: 0 5px;
+}
+
+.edit-icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.cancel-btn,
+.delete-btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  font-size: 1em;
+}
+
+.cancel-btn {
+  background-color: transparent;
+}
+
+.delete-btn {
+  background-color: var(--error-color);
+  border-radius: 5px;
+  color: white;
 }

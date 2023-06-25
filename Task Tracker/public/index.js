@@ -62,8 +62,13 @@ function openPopup() {
   document.querySelector('.task-modal').classList.remove('hide');
 }
 
-function closePopup() {
-  document.querySelector('.task-modal').classList.add('hide');
+function closePopup(popupName) {
+  if (popupName == 'task-modal') {
+    resetAddTaskPopup();
+    document.querySelector('.task-modal').classList.add('hide');
+  } else if (popupName == 'delete-modal') {
+    document.querySelector('.delete-modal').classList.add('hide');
+  }
 }
 
 function saveTask() {
@@ -77,6 +82,7 @@ function saveTask() {
     taskData['toDoList'] = getToDoList();
     taskList[taskUniqueId] = taskData;
     createTask(taskList[taskUniqueId], taskUniqueId);
+    updateTaskListStructure(taskList);
   }
 
   numberOfTasksAvailable++;
@@ -104,7 +110,10 @@ function createTask(taskData, id) {
 
 
   const taskCardTitle = document.createElement('summary');
-  taskCardTitle.innerText = taskName;
+  taskCardTitle.innerHTML = `${taskName}<div class="edit-icons">
+  <i class="fas fa-edit" onclick="editTask('task-${id}')"></i>
+  <i class="fas fa-trash" onclick="deleteTask('task-${id}')"></i>
+  </div>`;
 
   const taskDescription = document.createElement('p');
   taskDescription.textContent = taskData['description'];
@@ -138,3 +147,37 @@ function resetAddTaskPopup() {
     element.remove();
   });
 }
+
+function editTask(id) {
+  console.log(id);
+}
+
+function closeDeletePopup() {
+  closePopup('delete-modal');
+}
+
+function deleteTask(taskName) {
+  document.querySelector('.delete-modal').classList.remove('hide');
+  document.querySelector('.delete-btn').setAttribute('data-content', taskName);
+}
+
+function confirmDeleteTask(e) {
+  let taskToDelete = e.target.getAttribute('data-content').replace('task-', '');
+  delete taskList[taskToDelete];
+  updateTaskListStructure(taskList);
+  closeDeletePopup();
+}
+
+function updateTaskListStructure(taskList) {
+  console.log(taskList);
+  if (Object.keys(taskList).length !== 0) {
+    let numberOfTasks = Object.keys(taskList).length
+    console.log('not empty');
+    document.querySelector('.empty-task-list').classList.add('hide');
+  } else {
+    console.log('empty');
+    document.querySelector('.empty-task-list').classList.remove('hide');
+  }
+}
+
+updateTaskListStructure(taskList);
