@@ -140,7 +140,7 @@ class DataSender {
         // Add security constraints to validate the source of the request
         console.log(data);
         if (isThisYuWeWebPage()) {
-            sendData.postMessage(JSON.stringify(data));
+            SendDataToFlutter.postMessage(JSON.stringify(data));
         }
     }
 }
