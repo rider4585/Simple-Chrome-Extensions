@@ -25,15 +25,15 @@
             <div class="col">
                 <div class="form-group">
                     <label for="memberId" class="label-light-dark">Member ID:</label>
-                    <input type="text" class="form-control" id="memberId" placeholder="Enter Member ID">
+                    <input type="number" class="form-control" id="memberId" placeholder="Enter Member ID">
                 </div>
                 <div class="form-group">
                     <label for="name" class="label-light-dark">Name:</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter Name">
                 </div>
                 <div class="form-group">
-                    <label for="contactNo" class="label-light-dark">Contact No.:</label>
-                    <input type="text" class="form-control" id="contactNo" placeholder="Enter Contact No.">
+                    <label for="phoneNumber" class="label-light-dark">Contact No.:</label>
+                    <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Contact No.">
                 </div>
                 <div class="form-group">
                     <label for="email" class="label-light-dark">Email ID:</label>
@@ -43,7 +43,7 @@
             <div class="col">
                 <div class="form-group">
                     <label for="date" class="label-light-dark">Date:</label>
-                    <input type="text" class="form-control" id="date" placeholder="Enter Date">
+                    <input type="date" class="form-control" id="date" placeholder="Enter Date">
                 </div>
                 <div class="form-group">
                     <label for="invoiceNo" class="label-light-dark">Invoice No.:</label>
@@ -76,35 +76,40 @@
                     <tbody>
                         <tr>
                             <td>Course Name:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Course Name"></td>
+                            <td><input type="text" class="form-control" id="courseName" placeholder="Enter Course Name">
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>Plan:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Plan"></td>
+                            <td><input type="text" class="form-control" id="plan" placeholder="Enter Plan"></td>
                         </tr>
                         <tr>
                             <td>Instructor:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Instructor"></td>
+                            <td><input type="text" class="form-control" id="instructor" placeholder="Enter Instructor">
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>Start Date:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Start Date"></td>
+                            <td><input type="date" class="form-control" id="startDate" placeholder="Enter Start Date">
+                            </td>
                         </tr>
                         <tr>
                             <td>End Date:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter End Date"></td>
+                            <td><input type="date" class="form-control" id="endDate" placeholder="Enter End Date"></td>
                         </tr>
                         <tr class="light-dark">
                             <td>Pay Mode:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Pay Mode"></td>
+                            <td><input type="text" class="form-control" id="payMode" placeholder="Enter Pay Mode"></td>
                         </tr>
                         <tr>
                             <td>Amount in Words:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Amount in Words"></td>
+                            <td><input type="text" class="form-control" id="amountInWords"
+                                    placeholder="Enter Amount in Words"></td>
                         </tr>
                         <tr class="light-dark">
                             <td>Member GST:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Member GST"></td>
+                            <td><input type="text" class="form-control" id="memberGST" placeholder="Enter Member GST">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,39 +119,42 @@
                     <tbody>
                         <tr>
                             <td>Course Fee:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Course Fee"></td>
+                            <td><input type="number" class="form-control" id="courseFee" placeholder="Enter Course Fee">
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>Registration Fee:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Registration Fee"></td>
+                            <td><input type="text" class="form-control" id="registrationFee"
+                                    placeholder="Enter Registration Fee"></td>
                         </tr>
                         <tr>
                             <td>Discount:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Discount"></td>
+                            <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount">
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>CGST (9%):</td>
-                            <td><input type="text" class="form-control" placeholder="Enter CGST"></td>
+                            <td><input type="number" class="form-control" id="cgst" placeholder="Enter CGST"></td>
                         </tr>
                         <tr>
                             <td>SGST (9%):</td>
-                            <td><input type="text" class="form-control" placeholder="Enter SGST"></td>
+                            <td><input type="number" class="form-control" id="sgst" placeholder="Enter SGST"></td>
                         </tr>
                         <tr class="light-dark">
                             <td>IGST (0%):</td>
-                            <td><input type="text" class="form-control" placeholder="Enter IGST"></td>
+                            <td><input type="number" class="form-control" id="igst" placeholder="Enter IGST"></td>
                         </tr>
                         <tr>
                             <td>Total:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Total"></td>
+                            <td><input type="number" class="form-control" id="total" placeholder="Enter Total"></td>
                         </tr>
                         <tr class="light-dark">
                             <td>Paid Fees:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Paid Fees"></td>
+                            <td><input type="number" class="form-control" id="paid" placeholder="Enter Paid Fees"></td>
                         </tr>
                         <tr>
                             <td>Balance:</td>
-                            <td><input type="text" class="form-control" placeholder="Enter Balance"></td>
+                            <td><input type="number" class="form-control" id="balance" placeholder="Enter Balance"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -167,7 +175,7 @@
         <hr>
         <div class="row">
             <div class="col text-center">
-                <button type="button" class="btn btn-primary" onclick="validateResponse()">Submit</button>
+                <button type="button" class="submit-btn" onclick="validateResponse()">Generate Receipt</button>
             </div>
         </div>
     </div>
