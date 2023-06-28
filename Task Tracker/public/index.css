@@ -219,15 +219,23 @@ main {
   justify-content: end;
 }
 
-.save-btn {
+.save-btn,
+.update-btn {
   appearance: none;
-  background-color: var(--error-color);
   color: white;
   outline: none;
   border: none;
   font-size: 1em;
   border-radius: 4px;
   padding: 5px 10px;
+}
+
+.save-btn {
+  background-color: var(--error-color);
+}
+
+.update-btn {
+  background-color: var(--success-color);
 }
 
 #add-task-container {
