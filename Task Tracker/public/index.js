@@ -1,8 +1,27 @@
 // JavaScript code for navigation item click functionality
 let taskList = {};
-let numberOfTasksAvailable = 0;
+const taskModal = document.querySelector('.task-modal');
+const deleteModal = document.querySelector('.delete-modal');
 const navItems = document.querySelectorAll('.nav-item');
+const activeNavItem = document.querySelector('.nav-item.active');
+const tasksNavItem = document.querySelector('.nav-item[href="#tasks"]');
+const tasksSection = document.querySelector('#tasks');
+const ideasNavItem = document.querySelector('.nav-item[href="#ideas"]');
+const ideasSection = document.querySelector('#ideas');
 const sections = document.querySelectorAll('section');
+const emptyTaskListView = document.querySelector('.empty-task-list');
+const taskListContainer = document.querySelector('.task-list');
+const taskInfoForm = document.querySelector('.form');
+const taskNameInput = document.querySelector('#task-name');
+const taskDescriptionInput = document.querySelector('#task-description');
+const oneToDoItem = document.querySelector('.subTask');
+const firstToDoItem = document.querySelector('#subTasks');
+const toDoListContainer = document.querySelector('#sub-tasks-container');
+const footer = document.querySelector('footer');
+const deleteBtn = document.querySelector('.delete-btn');
+const updateBtn = document.querySelector('.update-btn');
+const saveBtn = document.querySelector('.save-btn');
+
 
 navItems.forEach(item => {
   item.addEventListener('click', handleNavItemClick);
@@ -13,7 +32,6 @@ function handleNavItemClick(event) {
 
   const clickedNavItem = event.currentTarget;
   if (!clickedNavItem.classList.contains('active')) {
-    const activeNavItem = document.querySelector('.nav-item.active');
     activeNavItem.classList.remove('active');
     clickedNavItem.classList.add('active');
     const sectionId = clickedNavItem.getAttribute('href');
@@ -31,20 +49,51 @@ function scrollToSection(sectionId) {
 }
 
 // Set the initial active state of the "Tasks" navigation item and scroll to the corresponding section
-const tasksNavItem = document.querySelector('.nav-item[href="#tasks"]');
+
 tasksNavItem.classList.add('active');
 scrollToSection(tasksNavItem.getAttribute('href'));
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelector('#tasks').setAttribute('style', `height: calc(100dvh - (${document.querySelector('footer').clientHeight}px + 40px))`);
-  document.querySelector('#ideas').setAttribute('style', `height: calc(100dvh - (${document.querySelector('footer').clientHeight}px + 40px))`);
+  tasksSection.setAttribute('style', `height: calc(100dvh - (${footer.clientHeight}px + 40px))`);
+  ideasSection.setAttribute('style', `height: calc(100dvh - (${footer.clientHeight}px + 40px))`);
+  isThereIsNoTask(taskList);
 })
 
 
 let subTasksCount = 1;
 
+function isThereIsNoTask(taskList) {
+  if (Object.keys(taskList).length !== 0) {
+    emptyTaskListView.classList.add('hide');
+    taskListContainer.classList.remove('hide')
+  } else {
+    emptyTaskListView.classList.remove('hide');
+    taskListContainer.classList.add('hide');
+  }
+}
+
+function addNewTask() {
+  taskModal.classList.remove('hide');
+
+  if (saveBtn.classList.contains('hide')) {
+    saveBtn.classList.remove('hide');
+  }
+  if (!updateBtn.classList.contains('hide')) {
+    updateBtn.classList.add('hide');
+  }
+}
+
+function closePopup(popupName) {
+  if (popupName == 'task-modal') {
+    resetAddTaskPopup();
+    taskModal.classList.add('hide');
+  } else if (popupName == 'delete-modal') {
+    deleteModal.classList.add('hide');
+  }
+}
+
 function addSubTask() {
-  const subTasksContainer = document.getElementById('sub-tasks-container');
+  const subTasksContainer = toDoListContainer;
 
   const subTaskInput = document.createElement('input');
   subTaskInput.type = 'text';
@@ -52,47 +101,17 @@ function addSubTask() {
   subTaskInput.className = 'subTask removeSubTask';
 
   subTasksContainer.appendChild(subTaskInput, subTasksContainer.lastElementChild);
+
   subTasksContainer.lastChild.focus();
-  document.querySelector('.form').scrollBy(0, document.querySelector('.form').scrollHeight);
+  taskInfoForm.scrollBy(0, taskInfoForm.scrollHeight);
 
   subTasksCount++;
 }
 
-function openPopup() {
-  document.querySelector('.task-modal').classList.remove('hide');
-}
-
-function closePopup(popupName) {
-  if (popupName == 'task-modal') {
-    resetAddTaskPopup();
-    document.querySelector('.task-modal').classList.add('hide');
-  } else if (popupName == 'delete-modal') {
-    document.querySelector('.delete-modal').classList.add('hide');
-  }
-}
-
-function saveTask() {
-  let taskUniqueId = numberOfTasksAvailable + 1;
-  let taskData = {};
-  let taskName = document.querySelector('#task-name').value;
-  let taskDescription = document.querySelector('#task-description').value;
-  if (taskName !== "") {
-    taskData['taskName'] = taskName;
-    taskData['description'] = taskDescription
-    taskData['toDoList'] = getToDoList();
-    taskList[taskUniqueId] = taskData;
-    createTask(taskList[taskUniqueId], taskUniqueId);
-    updateTaskListStructure(taskList);
-  }
-
-  numberOfTasksAvailable++;
-  resetAddTaskPopup();
-  document.querySelector('.task-modal').classList.add('hide');
-}
-
 function getToDoList() {
   let subTaskObject = {};
-  let SubTaskInputs = document.querySelectorAll('.subTask');
+  let allToDoItems = document.querySelectorAll('.subTask');
+  let SubTaskInputs = allToDoItems;
   for (let index = 0; index < SubTaskInputs.length; index++) {
     if (SubTaskInputs[index].value !== "") {
       subTaskObject[index] = SubTaskInputs[index].value;
@@ -101,83 +120,146 @@ function getToDoList() {
   return subTaskObject;
 }
 
-function createTask(taskData, id) {
-  let taskName = taskData['taskName'];
-  const taskContainer = document.querySelector('.task-list');
-
-  const taskCardTemplate = document.createElement('details');
-  taskCardTemplate.className = `task-${id}`;
-
-
-  const taskCardTitle = document.createElement('summary');
-  taskCardTitle.innerHTML = `${taskName}<div class="edit-icons">
-  <i class="fas fa-edit" onclick="editTask('task-${id}')"></i>
-  <i class="fas fa-trash" onclick="deleteTask('task-${id}')"></i>
-  </div>`;
-
-  const taskDescription = document.createElement('p');
-  taskDescription.textContent = taskData['description'];
-
-  const taskList = document.createElement('ol')
-
-  for (const task in taskData['toDoList']) {
-    if (Object.hasOwnProperty.call(taskData['toDoList'], task)) {
-      const taskItem = document.createElement('li');
-      taskItem.innerText = taskData['toDoList'][task];
-      taskList.appendChild(taskItem);
-    }
+function saveNewTask() {
+  let taskName = taskNameInput.value;
+  let taskDescription = taskDescriptionInput.value;
+  if (taskName) {
+    let taskId = generateUniqueId(taskName);
+    taskList[taskId] = {};
+    taskList[taskId]['taskName'] = taskName;
+    taskList[taskId]['description'] = taskDescription;
+    taskList[taskId]['toDoList'] = getToDoList();
+    generateTaskListView(taskList);
   }
+  isThereIsNoTask(taskList);
 
-  taskCardTemplate.appendChild(taskCardTitle);
-  taskCardTemplate.appendChild(taskDescription);
-  taskCardTemplate.appendChild(taskList);
-  // taskCardTemplate.innerText = "hi";
+  resetAddTaskPopup();
 
-  taskContainer.appendChild(taskCardTemplate, taskContainer.lastElementChild);
-  // document.querySelector('.').scrollBy(0, document.querySelector('.form').scrollHeight);
+  taskModal.classList.add('hide');
+}
 
+function generateUniqueId(taskName) {
+  let taskUniqueId = taskName.trim();
+  taskUniqueId = taskUniqueId.replace(/\s+/g, '-');
+  taskUniqueId = taskUniqueId.toLowerCase();
+  return taskUniqueId;
+}
+
+function generateTaskListView(taskList) {
+  let taskContainer = taskListContainer;
+  taskContainer.innerHTML = "";
+
+  // Logic to create views here
+  for (const task in taskList) {
+    let taskName = taskList[task]['taskName'];
+
+    let taskCardTemplate = document.createElement('details');
+    taskCardTemplate.className = task;
+
+    const taskCardTitle = document.createElement('summary');
+    taskCardTitle.innerHTML = `${taskName}<div class="edit-icons">
+    <i class="fas fa-edit" onclick="editTask('${task}')"></i>
+    <i class="fas fa-trash" onclick="deleteTask('${task}')"></i>
+    </div>`;
+
+    const taskDescription = document.createElement('p');
+    taskDescription.textContent = taskList[task]['description'];
+
+    const toDoList = document.createElement('ol');
+
+    for (const toDo in taskList[task]['toDoList']) {
+      if (Object.hasOwnProperty.call(taskList[task]['toDoList'], toDo)) {
+        const taskItem = document.createElement('li');
+        taskItem.innerText = taskList[task]['toDoList'][toDo];
+        toDoList.appendChild(taskItem);
+      }
+    }
+
+    taskCardTemplate.appendChild(taskCardTitle);
+    taskCardTemplate.appendChild(taskDescription);
+    taskCardTemplate.appendChild(toDoList);
+    taskContainer.appendChild(taskCardTemplate);
+  }
 }
 
 function resetAddTaskPopup() {
-  document.querySelector('#task-name').value = "";
-  document.querySelector('#task-description').value = "";
-  document.querySelector('.subTask').value = "";
-  let allSubTasks = document.querySelectorAll('.removeSubTask');
-  allSubTasks.forEach(element => {
-    element.remove();
-  });
+  let removeToDoItems = document.querySelectorAll('.removeSubTask');
+  taskNameInput.value = "";
+  taskDescriptionInput.value = "";
+  oneToDoItem.value = "";
+  let allSubTasks = removeToDoItems;
+  if (allSubTasks) {
+    allSubTasks.forEach(element => {
+      element.remove();
+    });
+  }
+  subTasksCount = 1;
 }
 
-function editTask(id) {
-  console.log(id);
+function deleteTask(taskName) {
+  deleteModal.classList.remove('hide');
+  deleteBtn.setAttribute('data-content', taskName);
+}
+
+function confirmDeleteTask(e) {
+  let taskToDelete = e.target.getAttribute('data-content');
+  delete taskList[taskToDelete];
+  closeDeletePopup();
+  generateTaskListView(taskList);
+  isThereIsNoTask(taskList);
 }
 
 function closeDeletePopup() {
   closePopup('delete-modal');
 }
 
-function deleteTask(taskName) {
-  document.querySelector('.delete-modal').classList.remove('hide');
-  document.querySelector('.delete-btn').setAttribute('data-content', taskName);
-}
+function editTask(taskName) {
 
-function confirmDeleteTask(e) {
-  let taskToDelete = e.target.getAttribute('data-content').replace('task-', '');
-  delete taskList[taskToDelete];
-  updateTaskListStructure(taskList);
-  closeDeletePopup();
-}
+  taskModal.classList.remove('hide');
 
-function updateTaskListStructure(taskList) {
-  console.log(taskList);
-  if (Object.keys(taskList).length !== 0) {
-    let numberOfTasks = Object.keys(taskList).length
-    console.log('not empty');
-    document.querySelector('.empty-task-list').classList.add('hide');
-  } else {
-    console.log('empty');
-    document.querySelector('.empty-task-list').classList.remove('hide');
+  if (!saveBtn.classList.contains('hide')) {
+    saveBtn.classList.add('hide');
   }
+  if (updateBtn.classList.contains('hide')) {
+    updateBtn.classList.remove('hide')
+  }
+
+  fillTaskData(taskName);
+
 }
 
-updateTaskListStructure(taskList);
+function fillTaskData(taskId) {
+  taskNameInput.value = taskList[taskId]['taskName'];
+
+  if (taskList[taskId]['description']) {
+    taskDescriptionInput.value = taskList[taskId]['description'];
+  }
+
+  if (Object.keys(taskList[taskId]['toDoList']).length !== 0) {
+    let numberOfToDoItems = Object.keys(taskList[taskId]['toDoList']).length - 1;
+    for (let index = 0; index < numberOfToDoItems; index++) {
+      addSubTask();
+    }
+
+    let allToDoItems = document.querySelectorAll('.subTask');
+
+    for (let index = 0; index < allToDoItems.length; index++) {
+      allToDoItems[index].value = taskList[taskId]['toDoList'][index];
+    }
+  }
+  updateBtn.setAttribute('data-content', taskId);
+  taskInfoForm.scrollTop = 0;
+}
+
+function updateTask(e) {
+  let taskToUpdate = e.target.getAttribute('data-content');
+
+  if (taskNameInput.value) {
+    taskList[taskToUpdate]['taskName'] = taskNameInput.value;
+    taskList[taskToUpdate]['description'] = taskNameInput.value;
+    taskList[taskToUpdate]['toDoList'] = getToDoList();
+    generateTaskListView(taskList);
+  }
+  resetAddTaskPopup();
+  taskModal.classList.add('hide');
+}
