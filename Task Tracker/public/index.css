@@ -93,6 +93,7 @@ main {
 
 .empty-task-text {
   text-align: center;
+  cursor: default;
 }
 
 
