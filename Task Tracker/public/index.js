@@ -31,12 +31,15 @@ function handleNavItemClick(event) {
   event.preventDefault();
 
   const clickedNavItem = event.currentTarget;
-  if (!clickedNavItem.classList.contains('active')) {
-    activeNavItem.classList.remove('active');
-    clickedNavItem.classList.add('active');
-    const sectionId = clickedNavItem.getAttribute('href');
-    scrollToSection(sectionId);
+
+  console.log(navItems.length);
+  for (const element of navItems) {
+    if (element.classList.contains('active')) {
+      element.classList.remove('active');
+    }
   }
+
+  clickedNavItem.classList.add('active');
 }
 
 // JavaScript code for smooth scrolling to sections
