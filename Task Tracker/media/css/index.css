@@ -7,6 +7,20 @@
   --info-color: #17a2b8;
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .hide {
   display: none !important;
 }
@@ -76,22 +90,24 @@ main {
   opacity: 1;
 }
 
-.empty-task-list {
+.empty-task-list,
+.empty-idea-list {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
-  /* Adjust the height as needed */
 }
 
-.empty-task-icon {
+.empty-task-icon,
+.empty-idea-icon {
   font-size: 2em;
   margin-bottom: 1rem;
 }
 
-.empty-task-text {
+.empty-task-text,
+.empty-idea-text {
   text-align: center;
   cursor: default;
 }
@@ -129,7 +145,8 @@ main {
 }
 
 .add-button:active,
-.save-btn:active {
+.save-task-btn:active,
+.save-idea-btn:active {
   background-color: #de1223;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -148,7 +165,8 @@ main {
   z-index: 2;
 }
 
-.form,
+.task-form,
+.idea-form,
 .delete-popup {
   width: calc(100% - 80px);
   margin: 20% 20px 0 20px;
@@ -220,8 +238,10 @@ main {
   justify-content: end;
 }
 
-.save-btn,
-.update-btn {
+.save-task-btn,
+.update-task-btn,
+.save-idea-btn,
+.update-idea-btn {
   appearance: none;
   color: white;
   outline: none;
@@ -231,11 +251,13 @@ main {
   padding: 5px 10px;
 }
 
-.save-btn {
+.save-task-btn,
+.save-idea-btn {
   background-color: var(--error-color);
 }
 
-.update-btn {
+.update-task-btn,
+.update-idea-btn {
   background-color: var(--success-color);
 }
 
@@ -300,7 +322,8 @@ summary {
 }
 
 .cancel-btn,
-.delete-btn {
+.delete-task-btn,
+.delete-idea-btn {
   appearance: none;
   border: none;
   outline: none;
@@ -313,8 +336,13 @@ summary {
   background-color: transparent;
 }
 
-.delete-btn {
+.delete-task-btn,
+.delete-idea-btn {
   background-color: var(--error-color);
   border-radius: 5px;
   color: white;
+}
+
+.idea-modal .btn-control {
+  margin-top: 2em;
 }
