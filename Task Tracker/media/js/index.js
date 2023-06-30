@@ -7,14 +7,14 @@ let loadData = {
   'ideaList': '{"first-idea":{"ideaName":"First Idea","ideaDescription":"lsdkvnsoihvssienlsdrblsir"},"second-idea":{"ideaName":"Second Idea","ideaDescription":"skdiughewi8gwu"}}'
 }
 
-if (loadData) {
-  if (loadData['taskList']) {
-    taskList = JSON.parse(loadData['taskList']);
-  }
-  if (loadData['ideaList']) {
-    ideaList = JSON.parse(loadData['ideaList']);
-  }
-}
+// if (loadData) {
+//   if (loadData['taskList']) {
+//     taskList = JSON.parse(loadData['taskList']);
+//   }
+//   if (loadData['ideaList']) {
+//     ideaList = JSON.parse(loadData['ideaList']);
+//   }
+// }
 const taskModal = document.querySelector('.task-modal');
 const ideaModal = document.querySelector('.idea-modal');
 const taskDeleteModal = document.querySelector('.task-delete.delete-modal');
