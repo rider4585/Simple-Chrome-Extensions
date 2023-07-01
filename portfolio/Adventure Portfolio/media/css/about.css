@@ -1,0 +1,57 @@
+#about_page {
+    display: flex;
+    flex-direction: row;
+}
+
+#photo,
+#statement {
+    height: 100%;
+    width: 50%;
+}
+
+#photo {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#statement {
+    /* background-color: rgb(0, 0, 0); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+    flex-direction: column;
+
+}
+
+#image_wrapper {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/profile_image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 55%;
+}
+
+.about_text {
+    padding-right: 5em;
+    margin-bottom: 0.5em;
+    color: white;
+    text-align: justify;
+    font-family: Gotham-Book;
+    letter-spacing: 1px;
+    word-break: keep-all;
+    line-height: 1.5em;
+}
+
+.about_text span {
+    /* background-color: white; */
+    /* color: black; */
+    display: inline-block;
+    border: 2.5px solid white;
+    padding: 4px;
+    transform: skewX(-10deg);
+    line-height: 1em;
+}
