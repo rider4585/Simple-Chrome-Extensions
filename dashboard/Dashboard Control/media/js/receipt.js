@@ -51,23 +51,26 @@ class DataGenerator {
             igst
         } = this.data.paymentInfo;
         this.data.paymentInfo.total =
-            parseFloat(courseFee) + parseFloat(registrationFee) - parseFloat(discount) + parseFloat(cgst) + parseFloat(sgst) + parseFloat(igst);
+            parseFloat(courseFee) +
+            parseFloat(registrationFee) -
+            parseFloat(discount) +
+            parseFloat(cgst) +
+            parseFloat(sgst) +
+            parseFloat(igst);
     }
 
     calculateBalance() {
         const {
             total,
-            paidFees
+            paid
         } = this.data.paymentInfo;
-        this.data.paymentInfo.balance = total - parseFloat(paidFees);
+        this.data.paymentInfo.balance = total - parseFloat(paid);
     }
 
     generateJSON() {
         return this.data;
     }
-}
 
-class DataValidator {
     static isFieldEmpty(data) {
         for (const section in data) {
             for (const key in data[section]) {
@@ -83,7 +86,7 @@ class DataValidator {
         return !isNaN(parseFloat(value)) && isFinite(value);
     }
 
-    static validateInputFields(data) {
+    validateInputFields() {
         const {
             courseFee,
             registrationFee,
@@ -91,11 +94,11 @@ class DataValidator {
             cgst,
             sgst,
             igst,
-            paidFees
-        } = data.paymentInfo;
+            paid
+        } = this.data.paymentInfo;
 
         const validateField = (field) => {
-            return DataValidator.isNumber(field) && parseFloat(field) >= 0;
+            return DataGenerator.isNumber(field) && parseFloat(field) >= 0;
         };
 
         return (
@@ -105,42 +108,15 @@ class DataValidator {
             validateField(cgst) &&
             validateField(sgst) &&
             validateField(igst) &&
-            validateField(paidFees)
+            validateField(paid)
         );
     }
-    static validateInputFields(data) {
-        const {
-            courseFee,
-            registrationFee,
-            discount,
-            cgst,
-            sgst,
-            igst,
-            paidFees
-        } = data.paymentInfo;
 
-        const validateField = (field) => {
-            return DataValidator.isNumber(field) && parseFloat(field) >= 0;
-        };
-
-        return (
-            validateField(courseFee) &&
-            validateField(registrationFee) &&
-            validateField(discount) &&
-            validateField(cgst) &&
-            validateField(sgst) &&
-            validateField(igst) &&
-            validateField(paidFees)
-        );
-    }
-}
-
-class DataSender {
-    static sendData(data) {
+    sendData() {
         // Add security constraints to validate the source of the request
-        console.log(data);
+        console.log(this.data);
         if (isThisYuWeWebPage()) {
-            SendDataToFlutter.postMessage(JSON.stringify(data));
+            SendDataToFlutter.postMessage(JSON.stringify(this.data));
         }
     }
 }
@@ -162,9 +138,9 @@ function calculateTotalAndBalance() {
     dataGenerator.setFieldValue('paymentInfo', 'courseFee', courseFee);
 
     const paidFees = document.querySelector("input[placeholder='Enter Paid Fees']").value;
-    dataGenerator.setFieldValue('paymentInfo', 'paidFees', paidFees);
+    dataGenerator.setFieldValue('paymentInfo', 'paid', paidFees);
 
-    if (DataValidator.validateInputFields(dataGenerator.generateJSON())) {
+    if (dataGenerator.validateInputFields()) {
         dataGenerator.calculateTotal();
         dataGenerator.calculateBalance();
 
@@ -230,48 +206,11 @@ function validateResponse() {
         dataGenerator.setFieldValue('paymentInfo', field, inputField ? inputField.value : '');
     });
 
-    if (DataValidator.isFieldEmpty(dataGenerator.generateJSON())) {
+    if (DataGenerator.isFieldEmpty(dataGenerator.generateJSON())) {
         alert('Please fill in all the required fields.');
     } else {
-        DataSender.sendData(dataGenerator.generateJSON());
+        dataGenerator.sendData();
     }
-}
-
-
-
-function fillForm() {
-    // Personal Information
-    document.getElementById('memberId').value = '123456';
-    document.getElementById('name').value = 'John Doe';
-    document.getElementById('phoneNumber').value = '1234567890';
-    document.getElementById('email').value = 'johndoe@example.com';
-    document.getElementById('date').value = '2023-06-26';
-    document.getElementById('invoiceNo').value = 'INV-123456';
-    document.getElementById('gstNo').value = 'GST123456';
-    document.getElementById('sacNo').value = 'SAC123456';
-    document.getElementById('place').value = 'City';
-    document.getElementById('state').value = 'State';
-
-    // Enrollment Information
-    document.querySelector("input[placeholder='Enter Course Name']").value = 'English 101';
-    document.querySelector("input[placeholder='Enter Plan']").value = 'Basic';
-    document.querySelector("input[placeholder='Enter Instructor']").value = 'Jane Smith';
-    document.querySelector("input[placeholder='Enter Start Date']").value = '2023-07-01';
-    document.querySelector("input[placeholder='Enter End Date']").value = '2023-09-30';
-
-    // Payment Information
-    document.querySelector("input[placeholder='Enter Pay Mode']").value = 'Credit Card';
-    document.querySelector("input[placeholder='Enter Amount in Words']").value = 'One Thousand';
-    document.querySelector("input[placeholder='Enter Member GST']").value = 'GST123456';
-    document.querySelector("input[placeholder='Enter Course Fee']").value = '1000';
-    document.querySelector("input[placeholder='Enter Registration Fee']").value = '50';
-    document.querySelector("input[placeholder='Enter Discount']").value = '100';
-    document.querySelector("input[placeholder='Enter CGST']").value = '90';
-    document.querySelector("input[placeholder='Enter SGST']").value = '90';
-    document.querySelector("input[placeholder='Enter IGST']").value = '0';
-    document.querySelector("input[placeholder='Enter Paid Fees']").value = '500';
-
-    calculateTotalAndBalance();
 }
 
 function isThisYuWeWebPage() {
@@ -289,4 +228,18 @@ function setData(data) {
             document.getElementById("memberId").value = data['phoneNumber'];
         }
     }
+
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    const formattedDate = `${dd}-${mm}-${yyyy}`;
+    console.log(formattedDate);
+    dateInput.value = formattedDate;
 }
+
+setData({
+    'name': 'Raviraj Mahendra Bugge',
+    'phoneNumber': '7798476162'
+})
